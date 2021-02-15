@@ -18,7 +18,7 @@ icecast2
 
 Docker
 
-`/docker/icecast.sh`
+`/scripts/docker-icecast.sh`
 
 
 ## PLAYER
