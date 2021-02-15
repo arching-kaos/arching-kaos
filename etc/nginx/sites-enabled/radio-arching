@@ -1,0 +1,10 @@
+server {
+	root /srv/html;
+	index index.html;
+	server_name {$RADIO_SERVER_NAME};
+	location / {
+		try_files $uri $uri/ =404;
+	}
+	listen [::]:80;
+	listen 80;
+}

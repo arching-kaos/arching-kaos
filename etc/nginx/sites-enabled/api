@@ -1,0 +1,15 @@
+server {
+	server_name {$API_SERVER_NAME};
+	listen 80;
+	listen [::]:80;
+        gzip on;
+        gzip_types text/plain application/xml application/javascript text/css image/gif image/jpeg image/png image/svg+xml audio/ogg audio/vorbis audio/opus;
+        gunzip on;
+
+        location /shows {
+		proxy_pass http://127.0.0.1:3001/shows;
+        }
+	location / {
+	    return 301 http://{$DOCS_SERVER_NAME};
+	}
+}
