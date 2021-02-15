@@ -16,6 +16,10 @@ icecast2
 
 `/etc/icecast2/icecast.xml`
 
-`
+## PLAYER
+
+liquidsoap
+
+`/etc/liquidsoap/radio.liq`
 
 
