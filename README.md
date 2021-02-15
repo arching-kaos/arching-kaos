@@ -16,6 +16,15 @@ icecast2
 
 `/etc/icecast2/icecast.xml`
 
-`
+Docker
+
+`/scripts/docker-icecast.sh`
+
+
+## PLAYER
+
+liquidsoap
+
+`/etc/liquidsoap/radio.liq`
 
 
