@@ -16,6 +16,11 @@ icecast2
 
 `/etc/icecast2/icecast.xml`
 
+Docker
+
+`/docker/icecast.sh`
+
+
 ## PLAYER
 
 liquidsoap
