@@ -1,0 +1,3 @@
+[submodule "api"]
+	path = modules/arching-kaos-api
+	url = https://git.arching-kaos.net/kaotisk/arching-kaos-api.git
