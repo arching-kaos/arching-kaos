@@ -10,6 +10,12 @@ NGINX
 
 `/etc/nginx/sites-enabled`
 
+## STREAM SERVER
 
+icecast2
+
+`/etc/icecast2/icecast.xml`
+
+`
 
 
