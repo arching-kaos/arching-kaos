@@ -1,5 +1,10 @@
 # arching-kaos
 
+## TORRENT-TRACKER
+
+Docker with opentracker
+`/scripts/docker-opentracker.sh`
+
 ## IRC
 
 `/etc/ngircd/ngircd.conf`
