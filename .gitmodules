@@ -1,3 +1,6 @@
 [submodule "api"]
 	path = modules/arching-kaos-api
 	url = https://git.arching-kaos.net/kaotisk/arching-kaos-api.git
+[submodule "radio"]
+	path = modules/arching-kaos-radio
+	url = https://git.arching-kaos.net/kaotisk/arching-kaos-radio.git
