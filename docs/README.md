@@ -11,4 +11,6 @@ Installing and operating a web radio station with
 - API for uploading and listing of radio mixes
 - a web site that renders based on live information through the API
 
+### How to use the repository?
+
 
