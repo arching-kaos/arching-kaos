@@ -1,5 +1,9 @@
 # arching-kaos
 
+## Documentation
+
+Documnantaion can found on `/docs/`
+
 ## TORRENT-TRACKER
 
 Docker with opentracker
