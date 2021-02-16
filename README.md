@@ -2,7 +2,7 @@
 
 ## Documentation
 
-Documnantaion can found on `/docs/`
+Documentation can be found on `/docs/`
 
 ## TORRENT-TRACKER
 
