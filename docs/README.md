@@ -14,4 +14,5 @@ Installing and operating a web radio station with
 ### How to use the repository?
 
 1. Clone it!
-how 's that for start?
+	how 's that for start?
+	`git clone <url>`
