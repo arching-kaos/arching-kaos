@@ -8,23 +8,24 @@ Can be launched with docker too
 
 `docker-arching-kaos-docs.sh`
 
+## Components
 
-## TORRENT-TRACKER
+### TORRENT-TRACKER
 
 Docker with opentracker
 `/scripts/docker-opentracker.sh`
 
-## IRC
+### IRC
 
 `/etc/ngircd/ngircd.conf`
 
-## WEB SERVER
+### WEB SERVER
 
 NGINX
 
 `/etc/nginx/sites-enabled`
 
-## STREAM SERVER
+### STREAM SERVER
 
 icecast2
 
@@ -35,7 +36,7 @@ Docker
 `/scripts/docker-icecast.sh`
 
 
-## PLAYER
+### PLAYER
 
 liquidsoap
 
@@ -47,15 +48,29 @@ liquidsoap
 
 ### FS
 
+`/storage`
+
 ### Torrent
 
 ### IPFS
 
+`/storage/ipfs`
+
+#### Docker
+
+`scripts/docker-ipfs.sh`
+
 ### Dat
+
+`/storage/dat`
 
 `scripts/run-dat-gateway.sh`
 
 `scripts/run-dat.sh`
+
+#### Docker submodule
+
+`modules/docker-dat-store`
 
 ## Tools, scripts
 
@@ -64,6 +79,8 @@ liquidsoap
 `scripts/gen-playlist.sh`
 
 ### Configuration
+
+#### Environment tools
 
 "grep"s the variables of the project
 
@@ -74,5 +91,11 @@ Supposingly we are going to use this to render all the configuration through it
 `scripts/sed-example.sh`
 
 Example is for rendering {$LOCATION} variable to "earth".
+
+#### CJDNS tools
+
+Strip comments from cjdroute configuration
+
+`scripts/cjdroute-strip-comment.sh`
 
 
