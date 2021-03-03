@@ -17,6 +17,12 @@ Installing and operating a web radio station with
 	how 's that for start?
 	`git clone <url>`
 
+2. See [README.md](../README.md) to read the components
+
+3. Setup the docker images, nginx, charybdis so arching-kaos can find its sources.
+
+4. Happy arching kaos!
+
 ### What is it based upon?
 
 It's based on icecast2 server to produce a stream.
