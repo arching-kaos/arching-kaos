@@ -1,2 +1,2 @@
 #!/bin/sh
-docker run -p 8000:8000 -v etc/icecast2/icecast.xml:/etc/icecast2/icecast.xml moul/icecast
+docker run --name icecast --restart always -p 8000:8000 -v {$ARCHING_KAOS_BASE_DIR}/etc/icecast2/icecast.xml:/etc/icecast2/icecast.xml moul/icecast
