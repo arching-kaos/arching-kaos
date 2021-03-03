@@ -5,7 +5,7 @@
         {
           "scope": "public",
           "host": "0.0.0.0",
-          "external": "{$SERVER_NAME}",
+          "external": "{$SSB_SERVER_NAME}",
           "transform": "shs",
           "port": 8008
         }
