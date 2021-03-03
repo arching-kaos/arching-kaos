@@ -1,7 +1,0 @@
-server {
-	server_name {$GIT_SERVER_NAME};
-	location / {
-		proxy_pass http://git.kaotisk-hund.com;
-		proxy_set_header X-Forwarded-For $remote_addr;
-	}
-}
