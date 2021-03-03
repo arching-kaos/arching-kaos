@@ -1,53 +1,45 @@
-scripts/sed-example.sh:sed -i.bak -e 's/{$LOCATION}/earth/' etc/icecast2/icecast.xml
-scripts/grep-env.sh:cat */*/* | grep -e "\{$.*\}"
-etc/nginx/sites-enabled/ssb:	server_name {$SSB_SERVER_NAME};
-etc/nginx/sites-enabled/support:	server_name {$SUPPORT_SERVER_NAME};
-etc/nginx/sites-enabled/tracker:	server_name {$TRACKER_SERVER_NAME};
-etc/nginx/sites-enabled/default:	server_name _ {$DOMAIN_NAME};
-etc/nginx/sites-enabled/radio-arching:	server_name {$RADIO_SERVER_NAME};
-etc/nginx/sites-enabled/icecast:	server_name {$ICECAST_SERVER_NAME};
-etc/nginx/sites-enabled/irc:	server_name {$IRC_SERVER_NAME};
-etc/nginx/sites-enabled/irc:		proxy_pass {$IRC_CLIENT};
-etc/nginx/sites-enabled/api:	server_name {$API_SERVER_NAME};
-etc/nginx/sites-enabled/api:	    return 301 http://{$DOCS_SERVER_NAME};
-etc/nginx/sites-enabled/docs:	server_name {$DOCS_SERVER_NAME};
-etc/nginx/sites-enabled/ipfs-gateway:	server_name {$IPFS_SERVER_NAME};
-etc/charybdis/ircd.conf:	vhost = "{$PUBLIC_IPV4}";
-etc/charybdis/ircd.conf:	vhost6 = "{$CJDNS_IPV6}";
-etc/charybdis/ircd.conf:	name = "{$ADMIN NAME}";
-etc/charybdis/ircd.conf:	description = "{$ADMIN_DESCRIPTION}";
-etc/charybdis/ircd.conf:	email = "{$ADMIN_EMAIL}";
-etc/charybdis/ircd.conf:	host = "{$PUBLIC_IPV4}";
-etc/charybdis/ircd.conf:	host = "{$PUBLIC_IPV6}":
-etc/charybdis/ircd.conf:	host = "{$CJDNS_IPV6}";
-etc/charybdis/ircd.conf:	password = "{$IRC_AUTH_PASSWORD}";
-etc/charybdis/ircd.conf:	password = "{$GOD_IRC_PASSWORD}";
-etc/charybdis/ircd.conf:connect "{$PEER_IRC_NAME}" {
-etc/charybdis/ircd.conf:        host = "{$PEER_IRC_IP}";
-etc/charybdis/ircd.conf:        send_password = "{$PEER_IRC_SEND_PASSWORD}";
-etc/charybdis/ircd.conf:        accept_password = "{$PEER_IRC_ACCEPT_PASSWORD}";
-etc/liquidsoap/radio.liq:live = input.harbor("live", port=3210, user="source", password="{$LIVE_SOURCE_PASSWORD}")
-etc/liquidsoap/radio.liq:  password="{$ICECAST_PASSWORD}",
-etc/icecast2/icecast.xml.bak:    <location>{$LOCATION}</location>
-etc/icecast2/icecast.xml.bak:    <admin>{$ADMIN_EMAIL}</admin>
-etc/icecast2/icecast.xml.bak:        <source-password>{$ICECAST_SOURCE_PASSWORD}</source-password>
-etc/icecast2/icecast.xml.bak:        <relay-password>{$ICECAST_RELAY_PASSWORD}</relay-password>
-etc/icecast2/icecast.xml.bak:        <admin-password>{$ICECAST_ADMIN_PASSWORD}</admin-password>
-etc/icecast2/icecast.xml.bak:    <hostname>{$ICECAST_HOSTNAME}</hostname>
-etc/icecast2/icecast.xml.bak:        <header name="Access-Control-Allow-Origin" value="{$RADIO_WEBSITE_BASEURL}" />
-etc/icecast2/icecast.xml.bak:        <server>{$ICECAST_PEER_IP}</server>
-etc/icecast2/icecast.xml.bak:        <port>{$ICECAST_PEER_PORT}</port>
-etc/icecast2/icecast.xml.bak:        <mount>{$ICECAST_PEER_MOUNT}</mount>
-etc/icecast2/icecast.xml.bak:        <local-mount>{$ICECAST_RELAY_MOUNT}</local-mount>
-etc/icecast2/icecast.xml:    <admin>{$ADMIN_EMAIL}</admin>
-etc/icecast2/icecast.xml:        <source-password>{$ICECAST_SOURCE_PASSWORD}</source-password>
-etc/icecast2/icecast.xml:        <relay-password>{$ICECAST_RELAY_PASSWORD}</relay-password>
-etc/icecast2/icecast.xml:        <admin-password>{$ICECAST_ADMIN_PASSWORD}</admin-password>
-etc/icecast2/icecast.xml:    <hostname>{$ICECAST_HOSTNAME}</hostname>
-etc/icecast2/icecast.xml:        <header name="Access-Control-Allow-Origin" value="{$RADIO_WEBSITE_BASEURL}" />
-etc/icecast2/icecast.xml:        <server>{$ICECAST_PEER_IP}</server>
-etc/icecast2/icecast.xml:        <port>{$ICECAST_PEER_PORT}</port>
-etc/icecast2/icecast.xml:        <mount>{$ICECAST_PEER_MOUNT}</mount>
-etc/icecast2/icecast.xml:        <local-mount>{$ICECAST_RELAY_MOUNT}</local-mount>
-.git/hooks/fsmonitor-watchman.sample:		output_result($o->{clock}, @{$o->{files}});
-.git/hooks/pre-rebase.sample:			if (!exists $not_in_next{$elem->[0]}) {
+{$LOCATION}
+{$API_SERVER_NAME}
+{$DOCS_SERVER_NAME}
+{$DOMAIN_NAME}
+{$DOCS_SERVER_NAME}
+{$ICECAST_SERVER_NAME}
+{$IPFS_SERVER_NAME}
+{$IRC_SERVER_NAME}
+{$IRC_CLIENT}
+{$RADIO_SERVER_NAME}
+{$SSB_SERVER_NAME}
+{$TRACKER_SERVER_NAME}
+{$ADMIN NAME}
+{$ADMIN_DESCRIPTION}
+{$ADMIN_EMAIL}
+{$PUBLIC_IPV4}
+{$PUBLIC_IPV6}
+{$CJDNS_IPV6}
+{$IRC_AUTH_PASSWORD}
+{$GOD_IRC_PASSWORD}
+{$PEER_IRC_NAME}
+{$PEER_IRC_IP}
+{$PEER_IRC_SEND_PASSWORD}
+{$PEER_IRC_ACCEPT_PASSWORD}
+{$ICECAST_SOURCE_PASSWORD}
+{$ICECAST_RELAY_PASSWORD}
+{$ICECAST_ADMIN_PASSWORD}
+{$ICECAST_HOSTNAME}
+{$RADIO_WEBSITE_BASEURL}
+{$ICECAST_PEER_IP}
+{$ICECAST_PEER_PORT}
+{$ICECAST_PEER_MOUNT}
+{$ICECAST_RELAY_MOUNT}
+{$LIVE_SOURCE_PASSWORD}
+{$ICECAST_PASSWORD}
+{$IRC_SERVER_NAME}
+{$IRC_MOTD_PHRASE}
+{$IRC_SERVER_NAME}
+{$IRC_OPERATOR_NICKNAME}
+{$IRC_OPERATOR_PASSWORD}
+{$IRC_CHANNEL}
+{$IRC_TOPIC}
+{$IRC_OPERATOR_NICKNAME}
+{$SSB_SERVER_NAME}
+{$ARCHING_KAOS_BASE_DIR}
