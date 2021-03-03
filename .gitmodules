@@ -4,3 +4,6 @@
 [submodule "radio"]
 	path = modules/arching-kaos-radio
 	url = https://git.arching-kaos.net/kaotisk/arching-kaos-radio.git
+[submodule "modules/docker-dat-store"]
+	path = modules/docker-dat-store
+	url = https://git.arching-kaos.net/kaotisk/docker-dat-store.git
