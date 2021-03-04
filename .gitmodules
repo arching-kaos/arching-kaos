@@ -10,3 +10,6 @@
 [submodule "modules/arching-kaos-generic"]
 	path = modules/arching-kaos-generic
 	url = https://git.arching-kaos.net/kaotisk/arching-kaos-generic.git
+[submodule "modules/arching-kaos-ssb"]
+	path = modules/arching-kaos-ssb
+	url = https://git.arching-kaos.net/kaotisk/arching-kaos-ssb.git
