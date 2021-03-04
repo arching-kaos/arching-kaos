@@ -11,6 +11,10 @@ git submodule init docker-dat-store
 git submodule update docker-dat-store
 cd ..
 
+echo "Configuring modules..."
+sed -i.bak -e 's/{$PWD}/\home\/kaotisk\/projects\/arching-kaos/' modules/docker-dat-store/start.sh
+sed -i.bak -e 's/{$PWD}/\home\/kaotisk\/projects\/arching-kaos/' modules/docker-dat-store/start.sh
+
 echo "Configuring /etc ..."
 sh ./scripts/configure-charybdis.sh
 sh ./scripts/configure-icecast.sh
