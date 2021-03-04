@@ -11,7 +11,7 @@ output.icecast(
   radio,
   mount="demo.ogg",
   host="localhost",
-  password="{$ICECAST_PASSWORD}",
+  password="{$ICECAST_SOURCE_PASSWORD}",
   url="http://radio.arching-kaos.com",
   description="Arching Kaos radio is a collaborative webradio with friends."
 )
