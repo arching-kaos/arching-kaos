@@ -52,7 +52,7 @@ Source:
 ### Web server
 > nginx web server
 
-- [ ] Simple install
+- [x] Simple install
 
 Configuration is done with:
 - `./scripts/configure-nginx.sh`
@@ -135,7 +135,7 @@ Scripts:
 
 `./scripts/gen-playlist.sh`
 
-### Configuration
+### Experimental stuff
 
 #### Environment tools
 
@@ -154,5 +154,3 @@ Example is for rendering {$LOCATION} variable to "earth".
 Strip comments from cjdroute configuration
 
 `scripts/cjdroute-strip-comment.sh`
-
-
