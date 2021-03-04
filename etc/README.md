@@ -1,26 +1,26 @@
 # arching-kaos
 ## `etc/`
 
-`nginx`
+### `nginx`
 
 `sites-enabled` in order to be mounted in docker
 
-`charybdis`
+### `charybdis`
 
 `ircd.conf` prototype and `ircd.motd` sample for use with charybdis.
 
-`liquidsoap`
+### `liquidsoap`
 
 `radio.liq` as the default liquidsoap program.
 
-`icecast2`
+### `icecast2`
 
 `icecast.xml` some basic configuration.
 
-`ssb-pub-data`
+### `ssb-pub-data`
 
 `config` file to use in ssb.
 
-### Optional instead of charybdis
+#### Optional instead of charybdis
 
 `ngircd` - Not supported for now
