@@ -1,3 +1,4 @@
 .env
+etc/ssb-pub-data
 node_modules
 storage
