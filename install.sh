@@ -31,23 +31,23 @@ sed -i.bak -e 's/{$ADMIN_EMAIL}/kaotisk@arching-kaos.com/' etc/icecast2/icecast.
 sed -i.bak -e 's/{$ICECAST_SOURCE_PASSWORD}/hackme/' etc/icecast2/icecast.xml
 sed -i.bak -e 's/{$ICECAST_RELAY_PASSWORD}/hackme/' etc/icecast2/icecast.xml
 sed -i.bak -e 's/{$ICECAST_ADMIN_PASSWORD}/hackme/' etc/icecast2/icecast.xml
-sed -i.bak -e 's/{$ICECAST_HOSTNAME}/icecast.arching-kaos.com/' etc/icecast2/icecast.xml
-sed -i.bak -e 's/{$RADIO_WEBSITE_BASEURL}/http:\/\/radio.arching-kaos.com/' etc/icecast2/icecast.xml
+sed -i.bak -e 's/{$ICECAST_HOSTNAME}/icecast.arching-kaos.local/' etc/icecast2/icecast.xml
+sed -i.bak -e 's/{$RADIO_WEBSITE_BASEURL}/http:\/\/radio.arching-kaos.local/' etc/icecast2/icecast.xml
 echo "...3/4 liquidsoap"
 sed -i.bak -e 's/{$ICECAST_SOURCE_PASSWORD}/hackme/' etc/liquidsoap/radio.liq
 sed -i.bak -e 's/{$LIVE_SOURCE_PASSWORD}/hackmetoo/' etc/liquidsoap/radio.liq
 echo "...4/4 nginx"
-sed -i.bak -e 's/{$API_SERVER_NAME}/api.arching-kaos.com/' etc/nginx/conf.d/api.conf
-sed -i.bak -e 's/{$DOCS_SERVER_NAME}/docs.arching-kaos.com/' etc/nginx/conf.d/api.conf
-sed -i.bak -e 's/{$DOMAIN_NAME}/arching-kaos.com/' etc/nginx/conf.d/default.conf
-sed -i.bak -e 's/{$DOCS_SERVER_NAME}/docs.arching-kaos.com/' etc/nginx/conf.d/docs.conf
-sed -i.bak -e 's/{$ICECAST_SERVER_NAME}/icecast.arching-kaos.com/' etc/nginx/conf.d/icecast.conf
-sed -i.bak -e 's/{$IPFS_SERVER_NAME}/ipfs.arching-kaos.com/' etc/nginx/conf.d/ipfs-gateway.conf
-sed -i.bak -e 's/{$IRC_SERVER_NAME}/irc.arching-kaos.com/' etc/nginx/conf.d/irc.conf
+sed -i.bak -e 's/{$API_SERVER_NAME}/api.arching-kaos.local/' etc/nginx/conf.d/api.conf
+sed -i.bak -e 's/{$DOCS_SERVER_NAME}/docs.arching-kaos.local/' etc/nginx/conf.d/api.conf
+sed -i.bak -e 's/{$DOMAIN_NAME}/arching-kaos.local/' etc/nginx/conf.d/default.conf
+sed -i.bak -e 's/{$DOCS_SERVER_NAME}/docs.arching-kaos.local/' etc/nginx/conf.d/docs.conf
+sed -i.bak -e 's/{$ICECAST_SERVER_NAME}/icecast.arching-kaos.local/' etc/nginx/conf.d/icecast.conf
+sed -i.bak -e 's/{$IPFS_SERVER_NAME}/ipfs.arching-kaos.local/' etc/nginx/conf.d/ipfs-gateway.conf
+sed -i.bak -e 's/{$IRC_SERVER_NAME}/irc.arching-kaos.local/' etc/nginx/conf.d/irc.conf
 sed -i.bak -e 's/{$IRC_CLIENT}/irc.arching-kaos.net/' etc/nginx/conf.d/irc.conf
-sed -i.bak -e 's/{$RADIO_SERVER_NAME}/radio.arching-kaos.com/' etc/nginx/conf.d/radio-arching.conf
-sed -i.bak -e 's/{$SSB_SERVER_NAME}/ssb.arching-kaos.com/' etc/nginx/conf.d/ssb.conf
-sed -i.bak -e 's/{$TRACKER_SERVER_NAME}/tracker.arching-kaos.com/' etc/nginx/conf.d/tracker.conf
+sed -i.bak -e 's/{$RADIO_SERVER_NAME}/radio.arching-kaos.local/' etc/nginx/conf.d/radio-arching.conf
+sed -i.bak -e 's/{$SSB_SERVER_NAME}/ssb.arching-kaos.local/' etc/nginx/conf.d/ssb.conf
+sed -i.bak -e 's/{$TRACKER_SERVER_NAME}/tracker.arching-kaos.local/' etc/nginx/conf.d/tracker.conf
 echo "Getting docker scripts ready ..."
 echo "Proceeding arching-kaos installation ..."
 echo "Starting docs..."
