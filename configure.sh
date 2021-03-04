@@ -11,28 +11,18 @@ git submodule init docker-dat-store
 git submodule update docker-dat-store
 echo "Done!"
 cd ..
-echo "Configuring modules..."
-echo "... docker-dat-store"
-sed -i.bak -e 's/{$PWD}/\/home\/kaotisk\/projects\/arching-kaos/' modules/docker-dat-store/start.sh
-sed -i.bak -e 's/{$PWD}/\/home\/kaotisk\/projects\/arching-kaos/' modules/docker-dat-store/start.sh
-echo "... arching-kaos-api"
-sed -i.bak -e 's/{$HOME}/\/home\/kaotisk/' modules/arching-kaos-api/install.sh
-sed -i.bak -e 's/{$HOME}/\/home\/kaotisk/' modules/arching-kaos-api/install.sh
 echo "Configuring /etc ..."
 echo "...1/4 charybdis"
 sed -i.bak -e 's/{$IRC_NAME}/irc.arching-kaos.net/' etc/charybdis/ircd.conf
 sed -i.bak -e 's/{$IRC_SID}/44Q/' etc/charybdis/ircd.conf
 sed -i.bak -e 's/{$IRC_DESCRIPTION}/A friendly IRC server/' etc/charybdis/ircd.conf
 sed -i.bak -e 's/{$IRC_NETNAME}/irc.arching-kaos.net/' etc/charybdis/ircd.conf
-sed -i.bak -e 's/{$PUBLIC_IPV4}/127.0.0.1/' etc/charybdis/ircd.conf
-sed -i.bak -e 's/{$PUBLIC_IPV6}/fc42:7cfa:b830:e988:f192:717f:6576:ed12/' etc/charybdis/ircd.conf
-sed -i.bak -e 's/{$CJDNS_IPV6}/fc42:7cfa:b830:e988:f192:717f:6576:ed12/' etc/charybdis/ircd.conf
+sed -i.bak -e 's/{$PUBLIC_IPV4}/127.0.0.1/g' etc/charybdis/ircd.conf
+sed -i.bak -e 's/{$PUBLIC_IPV6}/fc42:7cfa:b830:e988:f192:717f:6576:ed12/g' etc/charybdis/ircd.conf
+sed -i.bak -e 's/{$CJDNS_IPV6}/fc42:7cfa:b830:e988:f192:717f:6576:ed12/g' etc/charybdis/ircd.conf
 sed -i.bak -e 's/{$ADMIN NAME}/kaotisk/' etc/charybdis/ircd.conf
 sed -i.bak -e 's/{$ADMIN_DESCRIPTION}/some descr/' etc/charybdis/ircd.conf
 sed -i.bak -e 's/{$ADMIN_EMAIL}/kaotisk@arching-kaos.com/' etc/charybdis/ircd.conf
-sed -i.bak -e 's/{$PUBLIC_IPV4}/127.0.0.1/' etc/charybdis/ircd.conf
-sed -i.bak -e 's/{$PUBLIC_IPV6}/fc42:7cfa:b830:e988:f192:717f:6576:ed12/' etc/charybdis/ircd.conf
-sed -i.bak -e 's/{$CJDNS_IPV6}/fc42:7cfa:b830:e988:f192:717f:6576:ed12/' etc/charybdis/ircd.conf
 sed -i.bak -e 's/{$IRC_AUTH_PASSWORD}/somepass/' etc/charybdis/ircd.conf
 sed -i.bak -e 's/{$GOD_IRC_PASSWORD}/somepass/' etc/charybdis/ircd.conf
 echo "...2/4 icecast"
@@ -53,21 +43,11 @@ sed -i.bak -e 's/{$DOCS_SERVER_NAME}/docs.arching-kaos.com/' etc/nginx/conf.d/do
 sed -i.bak -e 's/{$ICECAST_SERVER_NAME}/icecast.arching-kaos.com/' etc/nginx/conf.d/icecast.conf
 sed -i.bak -e 's/{$IPFS_SERVER_NAME}/ipfs.arching-kaos.com/' etc/nginx/conf.d/ipfs-gateway.conf
 sed -i.bak -e 's/{$IRC_SERVER_NAME}/irc.arching-kaos.com/' etc/nginx/conf.d/irc.conf
-sed -i.bak -e 's/{$IRC_CLIENT}//' etc/nginx/conf.d/irc.conf
+sed -i.bak -e 's/{$IRC_CLIENT}/irc.arching-kaos.net/' etc/nginx/conf.d/irc.conf
 sed -i.bak -e 's/{$RADIO_SERVER_NAME}/radio.arching-kaos.com/' etc/nginx/conf.d/radio-arching.conf
 sed -i.bak -e 's/{$SSB_SERVER_NAME}/ssb.arching-kaos.com/' etc/nginx/conf.d/ssb.conf
 sed -i.bak -e 's/{$TRACKER_SERVER_NAME}/tracker.arching-kaos.com/' etc/nginx/conf.d/tracker.conf
 echo "Getting docker scripts ready ..."
-echo "... 1/1 fix base paths"
-sed -i.bak -e 's/{$ARCHING_KAOS_BASE_DIR}/\/home\/kaotisk\/projects\/arching-kaos/' scripts/docker-arching-kaos-docs.sh
-sed -i.bak -e 's/{$ARCHING_KAOS_BASE_DIR}/\/home\/kaotisk\/projects\/arching-kaos/' scripts/docker-icecast.sh
-sed -i.bak -e 's/{$ARCHING_KAOS_BASE_DIR}/\/home\/kaotisk\/projects\/arching-kaos/' scripts/docker-ipfs.sh
-sed -i.bak -e 's/{$ARCHING_KAOS_BASE_DIR}/\/home\/kaotisk\/projects\/arching-kaos/' scripts/docker-ipfs.sh
-sed -i.bak -e 's/{$ARCHING_KAOS_BASE_DIR}/\/home\/kaotisk\/projects\/arching-kaos/' scripts/docker-liquidsoap.sh
-sed -i.bak -e 's/{$ARCHING_KAOS_BASE_DIR}/\/home\/kaotisk\/projects\/arching-kaos/' scripts/docker-liquidsoap.sh
-sed -i.bak -e 's/{$ARCHING_KAOS_BASE_DIR}/\/home\/kaotisk\/projects\/arching-kaos/' scripts/docker-opentracker.sh
-sed -i.bak -e 's/{$ARCHING_KAOS_BASE_DIR}/\/home\/kaotisk\/projects\/arching-kaos/' scripts/docker-ssb-create.sh
-echo "... done"
 echo "Proceeding arching-kaos installation ..."
 echo "Starting docs..."
 sh ./scripts/docker-arching-kaos-docs.sh
@@ -103,4 +83,12 @@ sh ./build.sh
 sh ./start.sh
 echo "... done"
 cd ../..
+
+echo "Setting up IRC"
+sh ./scripts/charybdis-simple-install.sh
+cp etc/charybdis/ircd.conf $HOME/ircd/etc/ircd.conf
+cp etc/charybdis/ircd.motd $HOME/ircd/etc/ircd.motd
+echo "Starting IRC..."
+$HOME/ircd/bin/charybdis
+## TODO Insert crontab @reboot
 
