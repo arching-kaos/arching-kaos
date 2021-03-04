@@ -96,6 +96,8 @@ We store no torrents. Future release.
 
 ### IPFS
 
+- [x] Simple install
+
 Mount location:
 - `./storage/ipfs`
 
