@@ -19,3 +19,4 @@ sh ./scripts/docker-ssb-create.sh
 #run-dat-gateway.sh
 #run-dat.sh
 #sed-example.sh
+sh ./scripts/docker-liquidsoap.sh
