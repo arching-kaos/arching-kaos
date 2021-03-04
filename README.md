@@ -35,6 +35,8 @@ Docker with opentracker
 ### IRC
 > Charybdis IRC daemon.
 
+- [x] Simple install
+
 Static files:
 - `./etc/charybdis/ircd.conf`
 - `./etc/charybdis/ircd.conf-backup`
@@ -43,71 +45,93 @@ Static files:
 Scripts:
 - `./scripts/charybdis-fedora-install.sh`
 - `./scripts/charybdis-simple-install.sh`
-`
+
 Source:
 - `git.arching-kaos.net/kaotisk/charybdis.git`
 
-### WEB SERVER
+### Web server
 > nginx web server
+
+- [ ] Simple install
 
 Configuration is done with:
 - `./scripts/configure-nginx.sh`
 
 Either mount on docker or copy this folder:
-- `/etc/nginx/conf.d/`
+- `./etc/nginx/conf.d/`
 
-### STREAM SERVER
+### Stream server
+> icecast2
 
-icecast2
+- [x] Simple install
 
-`/etc/icecast2/icecast.xml`
+Static files:
+- `./etc/icecast2/icecast.xml`
 
-Docker
+Scripts:
+- `./scripts/docker-icecast.sh`
 
-`/scripts/docker-icecast.sh`
+### Player
+> liquidsoap
 
+- [x] Simple install
 
-### PLAYER
+Static files:
+- `./etc/liquidsoap/radio.liq`
 
-liquidsoap
-
-`/etc/liquidsoap/radio.liq`
-
-
+Scripts:
+- `./scripts/docker-liquidsoap.sh`
 
 ## Storage
 
 ### FS
+> Generic storage folder
 
-`/storage`
+Theoritical volume:
+- `./storage`
 
 ### Torrent
 
+We store no torrents. Future release.
+
 ### IPFS
 
-`/storage/ipfs`
+Mount location:
+- `./storage/ipfs`
 
-#### Docker
-
-`scripts/docker-ipfs.sh`
+Scripts
+- `./scripts/docker-ipfs.sh`
 
 ### Dat
 
-`/storage/dat`
+- [x] Simple install
 
-`scripts/run-dat-gateway.sh`
+Mount location:
+`./storage/dat`
 
-`scripts/run-dat.sh`
+Old scripts (use simple install):
+- `./scripts/run-dat-gateway.sh`
+- `./scripts/run-dat.sh`
 
-#### Docker submodule
+Docker submodule:
+- `./modules/docker-dat-store`
 
-`modules/docker-dat-store`
+### SSB
+
+- [x] Simple install
+
+Static files:
+- `./etc/ssb-pub-data`
+
+Scripts:
+- `./scripts/docker-ssb-create.sh`
 
 ## Tools, scripts
+> Collection of tools and scripts
 
 ### Generate playlist
 
-`scripts/gen-playlist.sh`
+`./scripts/gen-playlist.sh`
 
 ### Configuration
 
