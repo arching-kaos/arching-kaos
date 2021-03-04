@@ -8,10 +8,26 @@ Can be launched with docker too
 
 `./scripts/docker-arching-kaos-docs.sh`
 
+## Simple install
+
+Clone the repository using git:
+
+`git clone https://git.arching-kaos.net/kaotisk/arching-kaos.git`
+
+Change into that directory:
+
+`cd arching-kaos`
+
+and run
+
+`./install`
+
 ## Components
 
-### TORRENT-TRACKER
+### Torrent tracker
 > This is for future use.
+
+[x] - Simple install
 
 Docker with opentracker
 `./scripts/docker-opentracker.sh`
@@ -26,7 +42,8 @@ Static files:
 
 Scripts:
 - `./scripts/charybdis-fedora-install.sh`
-
+- `./scripts/charybdis-simple-install.sh`
+`
 Source:
 - `git.arching-kaos.net/kaotisk/charybdis.git`
 
