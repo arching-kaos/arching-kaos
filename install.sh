@@ -52,7 +52,11 @@ sed -i.bak -e 's/{$IRC_CLIENT}/irc.arching-kaos.net/' etc/nginx/conf.d/irc.conf
 sed -i.bak -e 's/{$RADIO_SERVER_NAME}/radio.arching-kaos.local/' etc/nginx/conf.d/radio-arching.conf
 sed -i.bak -e 's/{$SSB_SERVER_NAME}/ssb.arching-kaos.local/' etc/nginx/conf.d/ssb.conf
 sed -i.bak -e 's/{$TRACKER_SERVER_NAME}/tracker.arching-kaos.local/' etc/nginx/conf.d/tracker.conf
+echo "Create API directories"
+sh ./modules/arching-kaos-api/api-dir.sh
+
 echo "Getting docker scripts ready ..."
+
 echo "Proceeding arching-kaos installation ..."
 echo "Starting docs..."
 sh ./scripts/docker-arching-kaos-docs.sh
@@ -98,5 +102,4 @@ $HOME/ircd/bin/charybdis
 ## TODO Insert crontab @reboot
 echo "Starting NGINX...
 docker run --name nginx --restart always -d -p 80:80 -v $PWD/etc/nginx/conf.d:/etc/nginx/conf.d -v $PWD/modules/arching-kaos-generic:/srv/generic -v $PWD/modules/arching-kaos-ssb:/srv/ssb nginx
-
 echo "Voila!"
