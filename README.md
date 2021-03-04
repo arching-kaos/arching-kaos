@@ -6,24 +6,38 @@ Documentation can be found on `/docs/`
 
 Can be launched with docker too
 
-`docker-arching-kaos-docs.sh`
+`./scripts/docker-arching-kaos-docs.sh`
 
 ## Components
 
 ### TORRENT-TRACKER
+> This is for future use.
 
 Docker with opentracker
-`/scripts/docker-opentracker.sh`
+`./scripts/docker-opentracker.sh`
 
 ### IRC
+> Charybdis IRC daemon.
 
-`/etc/ngircd/ngircd.conf`
+Static files:
+- `./etc/charybdis/ircd.conf`
+- `./etc/charybdis/ircd.conf-backup`
+- `./etc/charybdis/ircd.motd`
+
+Scripts:
+- `./scripts/charybdis-fedora-install.sh`
+
+Source:
+- `git.arching-kaos.net/kaotisk/charybdis.git`
 
 ### WEB SERVER
+> nginx web server
 
-NGINX
+Configuration is done with:
+- `./scripts/configure-nginx.sh`
 
-`/etc/nginx/sites-enabled`
+Either mount on docker or copy this folder:
+- `/etc/nginx/conf.d/`
 
 ### STREAM SERVER
 
