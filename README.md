@@ -27,7 +27,7 @@ and run
 ### Torrent tracker
 > This is for future use.
 
-[x] - Simple install
+- [x] Simple install
 
 Docker with opentracker
 `./scripts/docker-opentracker.sh`
