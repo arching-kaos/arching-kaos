@@ -1,5 +1,5 @@
 #!/bin/sh
-echo "Welcome to arching-kaos installation. This script is Fedora based."
+echo "Welcome to arching-kaos installation."
 
 
 #TODO basic fedora install from the other repo
@@ -20,3 +20,18 @@ sh ./scripts/docker-ssb-create.sh
 #run-dat.sh
 #sed-example.sh
 sh ./scripts/docker-liquidsoap.sh
+
+
+cd modules/arching-kaos-api
+./install.sh
+cd ../..
+
+cd modules/arching-kaos-radio
+./start.sh
+cd ../..
+
+cd modules/docker-dat-store
+sh ./build.sh
+sh ./start.sh
+cd ../..
+
