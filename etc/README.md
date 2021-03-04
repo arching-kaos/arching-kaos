@@ -10,3 +10,5 @@
 `liquidsoap`
 
 `icecast2`
+
+`ssb-pub-data`

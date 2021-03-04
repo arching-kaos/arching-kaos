@@ -1,7 +1,0 @@
-liquidsoap:
-  image: pltnk/liquidsoap
-  container_name: liquidsoap
-  restart: always
-  volumes:
-    - ../etc/liquidsoap/radio.liq:/etc/liquidsoap/script.liq
-    - ../radio:/music
