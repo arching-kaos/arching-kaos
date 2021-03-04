@@ -12,10 +12,10 @@ git submodule update docker-dat-store
 cd ..
 
 echo "Configuring modules..."
-echo "\[docker-dat-store\]"
-sed -i.bak -e 's/{$PWD}/\home\/kaotisk\/projects\/arching-kaos/' modules/docker-dat-store/start.sh
-sed -i.bak -e 's/{$PWD}/\home\/kaotisk\/projects\/arching-kaos/' modules/docker-dat-store/start.sh
-echo "\[arching-kaos-api\]"
+echo "[docker-dat-store]"
+sed -i.bak -e 's/{$PWD}/\/home\/kaotisk\/projects\/arching-kaos/' modules/docker-dat-store/start.sh
+sed -i.bak -e 's/{$PWD}/\/home\/kaotisk\/projects\/arching-kaos/' modules/docker-dat-store/start.sh
+echo "[arching-kaos-api]"
 sh ./scripts/configure-aka-module.sh
 
 
