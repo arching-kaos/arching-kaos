@@ -1,5 +1,4 @@
 server {
-#	root /srv/html;
 	index index.html;
 	server_name {$RADIO_SERVER_NAME};
 	location / {
