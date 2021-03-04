@@ -12,19 +12,20 @@ git submodule update docker-dat-store
 cd ..
 
 echo "Configuring modules..."
-echo "[docker-dat-store]"
+echo "... docker-dat-store"
 sed -i.bak -e 's/{$PWD}/\/home\/kaotisk\/projects\/arching-kaos/' modules/docker-dat-store/start.sh
 sed -i.bak -e 's/{$PWD}/\/home\/kaotisk\/projects\/arching-kaos/' modules/docker-dat-store/start.sh
-echo "[arching-kaos-api]"
+echo "... arching-kaos-api"
 sh ./scripts/configure-aka-module.sh
 
-
-
-
 echo "Configuring /etc ..."
+echo "... charybdis"
 sh ./scripts/configure-charybdis.sh
+echo "... icecast"
 sh ./scripts/configure-icecast.sh
+echo "... liquidsoap"
 sh ./scripts/configure-liquidsoap.sh
+echo "... nginx"
 sh ./scripts/configure-nginx.sh
 
 echo "Getting docker scripts ready ..."
