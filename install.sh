@@ -7,6 +7,10 @@ git submodule init arching-kaos-api
 git submodule update arching-kaos-api
 git submodule init arching-kaos-radio
 git submodule update arching-kaos-radio
+git submodule init arching-kaos-generic
+git submodule update arching-kaos-generic
+git submodule init arching-kaos-ssb
+git submodule update arching-kaos-ssb
 git submodule init docker-dat-store
 git submodule update docker-dat-store
 echo "Done!"
@@ -92,4 +96,7 @@ cp etc/charybdis/ircd.motd $HOME/ircd/etc/ircd.motd
 echo "Starting IRC..."
 $HOME/ircd/bin/charybdis
 ## TODO Insert crontab @reboot
+echo "Starting NGINX...
+docker run --name nginx --restart always -d -p 80:80 -v $PWD/etc/nginx/conf.d:/etc/nginx/conf.d -v $PWD/modules/arching-kaos-generic:/srv/generic -v $PWD/modules/arching-kaos-ssb:/srv/ssb nginx
 
+echo "Voila!"
