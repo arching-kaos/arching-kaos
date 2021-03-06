@@ -13,3 +13,6 @@
 [submodule "modules/arching-kaos-ssb"]
 	path = modules/arching-kaos-ssb
 	url = https://git.arching-kaos.net/kaotisk/arching-kaos-ssb.git
+[submodule "modules/arching-kaos-irc"]
+	path = modules/arching-kaos-irc
+	url = https://git.arching-kaos.net/kaotisk/arching-kaos-irc.git

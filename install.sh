@@ -11,6 +11,8 @@ git submodule init arching-kaos-generic
 git submodule update arching-kaos-generic
 git submodule init arching-kaos-ssb
 git submodule update arching-kaos-ssb
+git submodule init arching-kaos-irc
+git submodule update arching-kaos-irc
 git submodule init docker-dat-store
 git submodule update docker-dat-store
 echo "Done!"
@@ -47,8 +49,8 @@ sed -i.bak -e 's/{$DOMAIN_NAME}/arching-kaos.local/g' etc/nginx/conf.d/default.c
 sed -i.bak -e 's/{$ICECAST_SERVER_NAME}/icecast.arching-kaos.local/g' etc/nginx/conf.d/icecast.conf modules/arching-kaos-radio/src/App.js modules/arching-kaos-radio/src/Menu.js modules/arching-kaos-radio/src/NowPlaying.js
 sed -i.bak -e 's/{$IPFS_SERVER_NAME}/ipfs.arching-kaos.local/g' etc/nginx/conf.d/ipfs-gateway.conf modules/arching-kaos-api/config.js
 sed -i.bak -e 's/{$IRC_SERVER_NAME}/irc.arching-kaos.local/' etc/nginx/conf.d/irc.conf
-sed -i.bak -e 's/{$IRC_CLIENT}/https:\/\/kiwiirc.com\/nextclient\/\?settings=49cd08681623316a0b3fd692cb5cdafe/g' etc/nginx/conf.d/irc.conf modules/arching-kaos-radio/src/Chat.js
-sed -i.bak -e 's/{$RADIO_SERVER_NAME}/radio.arching-kaos.local/' etc/nginx/conf.d/radio-arching.conf modules/arching-kaos-radio/src/Header.js
+sed -i.bak -e 's/{$IRC_CLIENT}/https:\/\/kiwiirc.com\/nextclient\/\?settings=470335c0b371d176c905ac73d649cd9b/g' etc/nginx/conf.d/irc.conf modules/arching-kaos-radio/src/Chat.js modules/arching-kaos-irc/index.html
+sed -i.bak -e 's/{$RADIO_SERVER_NAME}/radio.arching-kaos.local/g' etc/nginx/conf.d/radio-arching.conf modules/arching-kaos-radio/src/Header.js
 sed -i.bak -e 's/{$SSB_SERVER_NAME}/ssb.arching-kaos.local/g' etc/nginx/conf.d/ssb.conf etc/ssb-pub-data/config
 sed -i.bak -e 's/{$TRACKER_SERVER_NAME}/tracker.arching-kaos.local/' etc/nginx/conf.d/tracker.conf
 echo "Create API directories"
@@ -106,5 +108,5 @@ echo "Starting IRC..."
 $HOME/ircd/bin/charybdis
 ## TODO Insert crontab @reboot
 echo "Starting NGINX..."
-docker run --name nginx --restart always -d --network=host -v $PWD/etc/nginx/conf.d:/etc/nginx/conf.d -v $PWD/modules/arching-kaos-generic:/srv/generic -v $PWD/modules/arching-kaos-ssb:/srv/ssb nginx
+docker run --name nginx --restart always -d --network=host -v $PWD/etc/nginx/conf.d:/etc/nginx/conf.d -v $PWD/modules/arching-kaos-generic:/srv/generic -v $PWD/modules/arching-kaos-irc:/srv/irc -v $PWD/modules/arching-kaos-ssb:/srv/ssb nginx
 echo "Voila!"
