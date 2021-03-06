@@ -22,7 +22,7 @@ sed -i.bak -e 's/{$IRC_SID}/44Q/' etc/charybdis/ircd.conf
 sed -i.bak -e 's/{$IRC_DESCRIPTION}/A friendly IRC server/' etc/charybdis/ircd.conf
 sed -i.bak -e 's/{$IRC_NETNAME}/irc.arching-kaos.net/' etc/charybdis/ircd.conf
 sed -i.bak -e 's/{$PUBLIC_IPV4}/127.0.0.1/g' etc/charybdis/ircd.conf
-sed -i.bak -e 's/{$PUBLIC_IPV6}/fc42:7cfa:b830:e988:f192:717f:6576:ed12/g' etc/charybdis/ircd.conf
+#sed -i.bak -e 's/{$PUBLIC_IPV6}/fc42:7cfa:b830:e988:f192:717f:6576:ed12/g' etc/charybdis/ircd.conf
 sed -i.bak -e 's/{$CJDNS_IPV6}/fc42:7cfa:b830:e988:f192:717f:6576:ed12/g' etc/charybdis/ircd.conf
 sed -i.bak -e 's/{$ADMIN NAME}/kaotisk/' etc/charybdis/ircd.conf
 sed -i.bak -e 's/{$ADMIN_DESCRIPTION}/some descr/' etc/charybdis/ircd.conf
@@ -48,7 +48,7 @@ sed -i.bak -e 's/{$DOCS_SERVER_NAME}/docs.arching-kaos.local/' etc/nginx/conf.d/
 sed -i.bak -e 's/{$ICECAST_SERVER_NAME}/icecast.arching-kaos.local/' etc/nginx/conf.d/icecast.conf
 sed -i.bak -e 's/{$IPFS_SERVER_NAME}/ipfs.arching-kaos.local/' etc/nginx/conf.d/ipfs-gateway.conf
 sed -i.bak -e 's/{$IRC_SERVER_NAME}/irc.arching-kaos.local/' etc/nginx/conf.d/irc.conf
-sed -i.bak -e 's/{$IRC_CLIENT}/irc.arching-kaos.net/' etc/nginx/conf.d/irc.conf
+sed -i.bak -e 's/{$IRC_CLIENT}/https:\/\/kiwiirc.com\/nextclient\/\?settings=49cd08681623316a0b3fd692cb5cdafe/' etc/nginx/conf.d/irc.conf
 sed -i.bak -e 's/{$RADIO_SERVER_NAME}/radio.arching-kaos.local/' etc/nginx/conf.d/radio-arching.conf
 sed -i.bak -e 's/{$SSB_SERVER_NAME}/ssb.arching-kaos.local/' etc/nginx/conf.d/ssb.conf
 sed -i.bak -e 's/{$TRACKER_SERVER_NAME}/tracker.arching-kaos.local/' etc/nginx/conf.d/tracker.conf
