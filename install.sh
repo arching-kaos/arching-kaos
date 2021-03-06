@@ -49,7 +49,7 @@ sed -i.bak -e 's/{$IPFS_SERVER_NAME}/ipfs.arching-kaos.local/g' etc/nginx/conf.d
 sed -i.bak -e 's/{$IRC_SERVER_NAME}/irc.arching-kaos.local/' etc/nginx/conf.d/irc.conf
 sed -i.bak -e 's/{$IRC_CLIENT}/https:\/\/kiwiirc.com\/nextclient\/\?settings=49cd08681623316a0b3fd692cb5cdafe/g' etc/nginx/conf.d/irc.conf modules/arching-kaos-radio/src/Chat.js
 sed -i.bak -e 's/{$RADIO_SERVER_NAME}/radio.arching-kaos.local/' etc/nginx/conf.d/radio-arching.conf modules/arching-kaos-radio/src/Header.js
-sed -i.bak -e 's/{$SSB_SERVER_NAME}/ssb.arching-kaos.local/' etc/nginx/conf.d/ssb.conf
+sed -i.bak -e 's/{$SSB_SERVER_NAME}/ssb.arching-kaos.local/g' etc/nginx/conf.d/ssb.conf etc/ssb-pub-data/config
 sed -i.bak -e 's/{$TRACKER_SERVER_NAME}/tracker.arching-kaos.local/' etc/nginx/conf.d/tracker.conf
 echo "Create API directories"
 # sh ./modules/arching-kaos-api/api-dir.sh # Going the custom way again
