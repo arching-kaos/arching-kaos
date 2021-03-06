@@ -82,9 +82,10 @@ sh ./scripts/docker-liquidsoap.sh
 echo "... done"
 echo "Starting API..."
 cd modules/arching-kaos-api
-./install.sh
-echo "... done"
+sh ./install.sh
 cd ../..
+sh ./modules/arching-kaos-api/run.sh
+echo "... done"
 echo "Starting webpage..."
 cd modules/arching-kaos-radio
 ./start.sh
