@@ -104,5 +104,5 @@ echo "Starting IRC..."
 $HOME/ircd/bin/charybdis
 ## TODO Insert crontab @reboot
 echo "Starting NGINX..."
-docker run --name nginx --restart always -d -p 80:80 -v $PWD/etc/nginx/conf.d:/etc/nginx/conf.d -v $PWD/modules/arching-kaos-generic:/srv/generic -v $PWD/modules/arching-kaos-ssb:/srv/ssb nginx
+docker run --name nginx --restart always -d --network=host -v $PWD/etc/nginx/conf.d:/etc/nginx/conf.d -v $PWD/modules/arching-kaos-generic:/srv/generic -v $PWD/modules/arching-kaos-ssb:/srv/ssb nginx
 echo "Voila!"
