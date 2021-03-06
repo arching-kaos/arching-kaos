@@ -56,7 +56,7 @@ sed -i.bak -e 's/{$TRACKER_SERVER_NAME}/tracker.arching-kaos.local/' etc/nginx/c
 echo "Create API directories"
 # sh ./modules/arching-kaos-api/api-dir.sh # Going the custom way again
 export ARCHING_KAOS_API_DIR=$PWD/storage/.arching-kaos-api
-mkdir -p $ARCHING_KAOS_API_DIR
+mkdir -p $ARCHING_KAOS_API_DIR/downloads
 cp modules/arching-kaos-api/ipList.json-sample $ARCHING_KAOS_API_DIR/ipList.json
 cp modules/arching-kaos-api/shows.json-sample $ARCHING_KAOS_API_DIR/shows.json
 
