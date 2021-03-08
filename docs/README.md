@@ -40,6 +40,12 @@ Uses expressJS to create and run an API that holds a list of shows and an IP whi
 Uses CJDNS network for unique IP per uploader.
 
 Uses Liquidsoap to provide inputs to icecast2.
+
+## How the installation works
+
+After cloning the repository, you can review the `./install.sh` file, in order to configure basic parts of arching-kaos as:
+
+```
 #!/bin/sh
 echo "Getting the basics done..."
 echo "Initializing and updating modules..."
@@ -58,6 +64,8 @@ git submodule init docker-dat-store
 git submodule update docker-dat-store
 echo "Done!"
 cd ..
+```
+```
 echo "Configuring /etc ..."
 echo "...1/4 charybdis"
 sed -i.bak -e 's/{$IRC_NAME}/irc.arching-kaos.net/' etc/charybdis/ircd.conf
@@ -100,6 +108,9 @@ export ARCHING_KAOS_API_DIR=$PWD/storage/.arching-kaos-api
 mkdir -p $ARCHING_KAOS_API_DIR/downloads
 cp modules/arching-kaos-api/ipList.json-sample $ARCHING_KAOS_API_DIR/ipList.json
 cp modules/arching-kaos-api/shows.json-sample $ARCHING_KAOS_API_DIR/shows.json
+```
+
+```
 echo "Getting docker scripts ready ..."
 echo "Proceeding arching-kaos installation ..."
 echo "Starting docs..."
@@ -140,6 +151,8 @@ cd ../..
 echo "Starting thelounge..."
 sh ./scripts/docker-thelounge.sh
 echo "... done"
+```
+```
 echo "Setting up IRC"
 sh ./scripts/charybdis-simple-install.sh
 cp etc/charybdis/ircd.conf $HOME/ircd/etc/ircd.conf
@@ -147,6 +160,11 @@ cp etc/charybdis/ircd.motd $HOME/ircd/etc/ircd.motd
 echo "Starting IRC..."
 $HOME/ircd/bin/charybdis
 ## TODO Insert crontab @reboot
+```
+
+
+```
 echo "Starting NGINX..."
 docker run --name nginx --restart always -d --network=host -v $PWD/etc/nginx/conf.d:/etc/nginx/conf.d -v $PWD/modules/arching-kaos-generic:/srv/generic -v $PWD/modules/arching-kaos-irc:/srv/irc -v $PWD/modules/arching-kaos-ssb:/srv/ssb nginx
 echo "Voila!"
+```
