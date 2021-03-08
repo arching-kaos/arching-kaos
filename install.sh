@@ -1,6 +1,5 @@
 #!/bin/sh
 echo "Getting the basics done..."
-
 echo "Initializing and updating modules..."
 cd modules
 git submodule init arching-kaos-api
@@ -48,8 +47,8 @@ sed -i.bak -e 's/{$DOCS_SERVER_NAME}/docs.arching-kaos.local/g' etc/nginx/conf.d
 sed -i.bak -e 's/{$DOMAIN_NAME}/arching-kaos.local/g' etc/nginx/conf.d/default.conf modules/arching-kaos-radio/src/Signature.js
 sed -i.bak -e 's/{$ICECAST_SERVER_NAME}/icecast.arching-kaos.local/g' etc/nginx/conf.d/icecast.conf modules/arching-kaos-radio/src/App.js modules/arching-kaos-radio/src/Menu.js modules/arching-kaos-radio/src/NowPlaying.js
 sed -i.bak -e 's/{$IPFS_SERVER_NAME}/ipfs.arching-kaos.local/g' etc/nginx/conf.d/ipfs-gateway.conf modules/arching-kaos-api/config.js
-sed -i.bak -e 's/{$IRC_SERVER_NAME}/irc.arching-kaos.local/' etc/nginx/conf.d/irc.conf
-sed -i.bak -e 's/{$IRC_CLIENT}/https:\/\/kiwiirc.com\/nextclient\/\?settings=470335c0b371d176c905ac73d649cd9b/g' modules/arching-kaos-radio/src/Chat.js modules/arching-kaos-irc/index.html
+sed -i.bak -e 's/{$IRC_SERVER_NAME}/irc.arching-kaos.local/g' etc/nginx/conf.d/irc.conf etc/thelounge/config.js
+sed -i.bak -e 's/{$IRC_CLIENT}/http:\/\/127.0.0.1:9000/g' modules/arching-kaos-radio/src/Chat.js modules/arching-kaos-irc/index.html
 sed -i.bak -e 's/{$RADIO_SERVER_NAME}/radio.arching-kaos.local/g' etc/nginx/conf.d/radio-arching.conf modules/arching-kaos-radio/src/Header.js
 sed -i.bak -e 's/{$SSB_SERVER_NAME}/ssb.arching-kaos.local/g' etc/nginx/conf.d/ssb.conf etc/ssb-pub-data/config
 sed -i.bak -e 's/{$TRACKER_SERVER_NAME}/tracker.arching-kaos.local/' etc/nginx/conf.d/tracker.conf
@@ -59,10 +58,7 @@ export ARCHING_KAOS_API_DIR=$PWD/storage/.arching-kaos-api
 mkdir -p $ARCHING_KAOS_API_DIR/downloads
 cp modules/arching-kaos-api/ipList.json-sample $ARCHING_KAOS_API_DIR/ipList.json
 cp modules/arching-kaos-api/shows.json-sample $ARCHING_KAOS_API_DIR/shows.json
-
-
 echo "Getting docker scripts ready ..."
-
 echo "Proceeding arching-kaos installation ..."
 echo "Starting docs..."
 sh ./scripts/docker-arching-kaos-docs.sh
@@ -99,7 +95,9 @@ sh ./build.sh
 sh ./start.sh
 echo "... done"
 cd ../..
-
+echo "Starting thelounge..."
+sh ./scripts/docker-thelounge.sh
+echo "... done"
 echo "Setting up IRC"
 sh ./scripts/charybdis-simple-install.sh
 cp etc/charybdis/ircd.conf $HOME/ircd/etc/ircd.conf
