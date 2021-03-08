@@ -55,42 +55,59 @@ echo "Initializing and updating modules..."
 ```
 ### Submodules initiation
 
-In the very first part of `./install.sh` we just pull the git modules that we want to include in our project. To achieve that, we change our working directory to `./modules` where the modules are supposed to get downloaded.
+In the very first part of `./install.sh` we just pull the git modules that we want to include in our project.
+To achieve that, we change our working directory to `./modules` where the modules are supposed to get downloaded.
 
 ```
 cd modules
 ```
+
+We are going to start with `arching-kaos-api`. 
 ```
 git submodule init arching-kaos-api
 git submodule update arching-kaos-api
 ```
+
+We continue with `arching-kaos-radio`.
 ```
 git submodule init arching-kaos-radio
 git submodule update arching-kaos-radio
 ```
+Add the `arching-kaos-generic`.
 ```
 git submodule init arching-kaos-generic
 git submodule update arching-kaos-generic
 ```
+Also the `arching-kaos-ssb`.
 ```
 git submodule init arching-kaos-ssb
 git submodule update arching-kaos-ssb
 ```
+The `arching-kaos-irc`.
 ```
 git submodule init arching-kaos-irc
 git submodule update arching-kaos-irc
 ```
+And the `docker-dat-store`
 ```
 git submodule init docker-dat-store
 git submodule update docker-dat-store
+```
+We inform that we are done with the above
+```
 echo "Done!"
 ```
 And we change back to our root directory (project's one).
 ```
 cd ..
 ```
+### Configuring `./etc`
+Now, what we are going to do is simply replace variables placed in various files across the project to achieve correct settings before we run anything.
 ```
-echo "Configuring /etc ..."
+echo "Configuring ./etc ..."
+```
+We start with charybdis IRC daemon settings. Please adjust to your needs.
+```
 echo "...1/4 charybdis"
 sed -i.bak -e 's/{$IRC_NAME}/irc.arching-kaos.net/' etc/charybdis/ircd.conf
 sed -i.bak -e 's/{$IRC_SID}/44Q/' etc/charybdis/ircd.conf
@@ -104,6 +121,9 @@ sed -i.bak -e 's/{$ADMIN_DESCRIPTION}/some descr/' etc/charybdis/ircd.conf
 sed -i.bak -e 's/{$ADMIN_EMAIL}/kaotisk@arching-kaos.com/' etc/charybdis/ircd.conf
 sed -i.bak -e 's/{$IRC_AUTH_PASSWORD}/somepass/' etc/charybdis/ircd.conf
 sed -i.bak -e 's/{$GOD_IRC_PASSWORD}/somepass/' etc/charybdis/ircd.conf
+```
+And we continue with icecast2.
+```
 echo "...2/4 icecast"
 sed -i.bak -e 's/{$LOCATION}/earth/' etc/icecast2/icecast.xml
 sed -i.bak -e 's/{$ADMIN_EMAIL}/kaotisk@arching-kaos.com/' etc/icecast2/icecast.xml
@@ -112,9 +132,15 @@ sed -i.bak -e 's/{$ICECAST_RELAY_PASSWORD}/hackme/' etc/icecast2/icecast.xml
 sed -i.bak -e 's/{$ICECAST_ADMIN_PASSWORD}/hackme/' etc/icecast2/icecast.xml
 sed -i.bak -e 's/{$ICECAST_HOSTNAME}/icecast.arching-kaos.local/' etc/icecast2/icecast.xml
 sed -i.bak -e 's/{$RADIO_WEBSITE_BASEURL}/http:\/\/radio.arching-kaos.local/' etc/icecast2/icecast.xml
+```
+There goes liquidsoap settings also.
+```
 echo "...3/4 liquidsoap"
 sed -i.bak -e 's/{$ICECAST_SOURCE_PASSWORD}/hackme/' etc/liquidsoap/radio.liq
 sed -i.bak -e 's/{$LIVE_SOURCE_PASSWORD}/hackmetoo/' etc/liquidsoap/radio.liq
+```
+And nginx files as well source files from the submodules and other places that need the same values.
+```
 echo "...4/4 nginx"
 sed -i.bak -e 's/{$API_SERVER_NAME}/api.arching-kaos.local/g' etc/nginx/conf.d/api.conf modules/arching-kaos-radio/src/ShowList.js modules/arching-kaos-radio/src/Menu.js
 sed -i.bak -e 's/{$DOCS_SERVER_NAME}/docs.arching-kaos.local/g' etc/nginx/conf.d/api.conf etc/nginx/conf.d/docs.conf
@@ -126,6 +152,9 @@ sed -i.bak -e 's/{$IRC_CLIENT}/http:\/\/127.0.0.1:9000/g' modules/arching-kaos-r
 sed -i.bak -e 's/{$RADIO_SERVER_NAME}/radio.arching-kaos.local/g' etc/nginx/conf.d/radio-arching.conf modules/arching-kaos-radio/src/Header.js
 sed -i.bak -e 's/{$SSB_SERVER_NAME}/ssb.arching-kaos.local/g' etc/nginx/conf.d/ssb.conf etc/ssb-pub-data/config
 sed -i.bak -e 's/{$TRACKER_SERVER_NAME}/tracker.arching-kaos.local/' etc/nginx/conf.d/tracker.conf
+```
+We, then, create a folder where the `arching-kaos-api` files will reside when we will run it. And also, copy some sample files for getting the API ready.
+```
 echo "Create API directories"
 # sh ./modules/arching-kaos-api/api-dir.sh # Going the custom way again
 export ARCHING_KAOS_API_DIR=$PWD/storage/.arching-kaos-api
@@ -133,49 +162,85 @@ mkdir -p $ARCHING_KAOS_API_DIR/downloads
 cp modules/arching-kaos-api/ipList.json-sample $ARCHING_KAOS_API_DIR/ipList.json
 cp modules/arching-kaos-api/shows.json-sample $ARCHING_KAOS_API_DIR/shows.json
 ```
+### Starting docker images or build them in some cases
+
+In folder `./scripts/` files starting with `docker-` are small scripts that start certain images for our project to work.
 
 ```
 echo "Getting docker scripts ready ..."
 echo "Proceeding arching-kaos installation ..."
+```
+#### Documentation
+So we basically want to have our source documentation available so we start it from a script.
+```
 echo "Starting docs..."
 sh ./scripts/docker-arching-kaos-docs.sh
 echo "... done"
+```
+#### Icecast2
+```
 echo "Starting icecast..."
 sh ./scripts/docker-icecast.sh
 echo "... done"
+```
+#### IPFS
+```
 echo "Starting ipfs..."
 sh ./scripts/docker-ipfs.sh
 echo "... done"
+```
+#### Opentracker
+```
 echo "Starting opentracker..."
 sh ./scripts/docker-opentracker.sh
 echo "... done"
+```
+#### SSB
+```
 echo "Starting ssb..."
 sh ./scripts/docker-ssb-create.sh
 echo "... done"
+```
+#### Liquidsoap
+```
 echo "Starting liquidsoap..."
 sh ./scripts/docker-liquidsoap.sh
 echo "... done"
+```
+#### API
+```
 echo "Starting API..."
 cd modules/arching-kaos-api
 sh ./install.sh
 cd ../..
 sh ./modules/arching-kaos-api/run.sh
 echo "... done"
+```
+#### Web interface for the radio
+```
 echo "Starting webpage..."
 cd modules/arching-kaos-radio
 ./start.sh
 echo "... done"
 cd ../..
+```
+#### dat-store
+```
 echo "Starting dat-store..."
 cd modules/docker-dat-store
 sh ./build.sh
 sh ./start.sh
 echo "... done"
 cd ../..
+```
+#### thelounge
+```
 echo "Starting thelounge..."
 sh ./scripts/docker-thelounge.sh
 echo "... done"
 ```
+### Building last components
+#### IRC (charybdis)
 ```
 echo "Setting up IRC"
 sh ./scripts/charybdis-simple-install.sh
@@ -183,12 +248,14 @@ cp etc/charybdis/ircd.conf $HOME/ircd/etc/ircd.conf
 cp etc/charybdis/ircd.motd $HOME/ircd/etc/ircd.motd
 echo "Starting IRC..."
 $HOME/ircd/bin/charybdis
-## TODO Insert crontab @reboot
+#TODO Insert crontab @reboot
 ```
-
-
+### Patching everything into NGINX web proxy
 ```
 echo "Starting NGINX..."
 docker run --name nginx --restart always -d --network=host -v $PWD/etc/nginx/conf.d:/etc/nginx/conf.d -v $PWD/modules/arching-kaos-generic:/srv/generic -v $PWD/modules/arching-kaos-irc:/srv/irc -v $PWD/modules/arching-kaos-ssb:/srv/ssb nginx
+```
+## There you go!
+```
 echo "Voila!"
 ```
