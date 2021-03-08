@@ -43,26 +43,50 @@ Uses Liquidsoap to provide inputs to icecast2.
 
 ## How the installation works
 
-After cloning the repository, you can review the `./install.sh` file, in order to configure basic parts of arching-kaos as:
+After cloning the repository, you can review the `./install.sh` file, in order to configure basic parts of arching-kaos.
 
+We will now go into a deep analysis of the `./install.sh` script and see what it does and also explain the values that can be edited in there.
+
+We start with a small greeting to the user:
 ```
 #!/bin/sh
 echo "Getting the basics done..."
 echo "Initializing and updating modules..."
+```
+### Submodules initiation
+
+In the very first part of `./install.sh` we just pull the git modules that we want to include in our project. To achieve that, we change our working directory to `./modules` where the modules are supposed to get downloaded.
+
+```
 cd modules
+```
+```
 git submodule init arching-kaos-api
 git submodule update arching-kaos-api
+```
+```
 git submodule init arching-kaos-radio
 git submodule update arching-kaos-radio
+```
+```
 git submodule init arching-kaos-generic
 git submodule update arching-kaos-generic
+```
+```
 git submodule init arching-kaos-ssb
 git submodule update arching-kaos-ssb
+```
+```
 git submodule init arching-kaos-irc
 git submodule update arching-kaos-irc
+```
+```
 git submodule init docker-dat-store
 git submodule update docker-dat-store
 echo "Done!"
+```
+And we change back to our root directory (project's one).
+```
 cd ..
 ```
 ```
