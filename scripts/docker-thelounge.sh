@@ -1,5 +1,5 @@
 #!/bin/sh
-docker run --network=host \
+docker run -d --network=host \
         --name thelounge \
         --volume $PWD/etc/thelounge:/var/opt/thelounge \
         --restart always \
