@@ -25,21 +25,24 @@ Installing and operating a web radio station with
 
 ### What is it based upon?
 
-It's based on icecast2 server to produce a stream.
+1. It's based on icecast2 server to produce a stream.
+We just initialize a very simple but configured from our `./install.sh` script Icecast v2 docker image.
 
-Uses IPFS to upload, provide links and sync mixes.
+2. Uses IPFS to upload, provide links and sync mixes.
 
-Uses DAT and Torrent to produce sync options.
+3. Uses DAT and Torrent to produce sync options.
 
-Uses SSB to produce newsletter on SSB network.
+4. Uses SSB to produce newsletter on SSB network.
 
-Uses ReactJS to produce a webpage for the radio station.
+5. Uses ReactJS to produce a webpage for the radio station.
 
-Uses expressJS to create and run an API that holds a list of shows and an IP whitelist for authenticating uploaders.
+6. Uses expressJS to create and run an API that holds a list of shows and an IP whitelist for authenticating uploaders.
 
-Uses CJDNS network for unique IP per uploader.
+7. Uses CJDNS network for unique IP per uploader.
 
-Uses Liquidsoap to provide inputs to icecast2.
+8. Uses Liquidsoap to provide inputs to icecast2.
+
+9. Uses charybdis-ircd for communication.
 
 ## How the installation works
 
