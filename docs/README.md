@@ -16,8 +16,9 @@ Installing and operating a web radio station with
 ### How to use the repository?
 
 1. Clone it!
-  how 's that for start?
-  `git clone <url>`
+    how 's that for start?
+
+    `git clone <url>`
 
 2. See [README.md](../README.md) to read the components
 
