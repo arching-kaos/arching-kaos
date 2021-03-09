@@ -20,11 +20,9 @@ Installing and operating a web radio station with
 
     `git clone <url>`
 
-2. See [README.md](../README.md) to read the components
+2. Edit [install.sh](../install.sh) to match your preferences.
 
-3. Setup the docker images, nginx, charybdis so arching-kaos can find its sources.
-
-4. Happy arching kaos!
+3. Run `./install.sh` to configure, install and start `arching-kaos`.
 
 ### What is it based upon?
 
