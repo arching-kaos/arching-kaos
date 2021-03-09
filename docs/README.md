@@ -110,6 +110,7 @@ Now, what we are going to do is simply replace variables placed in various files
 ```
 echo "Configuring ./etc ..."
 ```
+#### IRC
 We start with charybdis IRC daemon settings. Please adjust to your needs.
 ```
 echo "...1/4 charybdis"
@@ -125,6 +126,8 @@ serverinfo {
 	description = "{$IRC_DESCRIPTION}";
 	network_name = "{$IRC_NETNAME}";
 	vhost = "{$PUBLIC_IPV4}";
+	# In case you want to use a public IPv6 you may want to uncomment the
+	# following line and also set an IPv6 in the appropriate sed command.
 	#vhost6 = "{$PUBLIC_IPV6}";
 	vhost6 = "{$CJDNS_IPV6}";
 };
@@ -156,7 +159,7 @@ auth {
 - Administrator settings
 ```
 operator "god" {
-	user = "*god@127.0.0.1";
+	user = "*god@{$CJDNS_IPV6}";
 	password = "{$GOD_IRC_PASSWORD}";
 	snomask = "+Zbfkrsuy";
 	flags = ~encrypted;
@@ -171,6 +174,7 @@ sed -i.bak -e 's/{$IRC_SID}/44Q/' etc/charybdis/ircd.conf
 sed -i.bak -e 's/{$IRC_DESCRIPTION}/A friendly IRC server/' etc/charybdis/ircd.conf
 sed -i.bak -e 's/{$IRC_NETNAME}/irc.arching-kaos.net/' etc/charybdis/ircd.conf
 sed -i.bak -e 's/{$PUBLIC_IPV4}/127.0.0.1/g' etc/charybdis/ircd.conf
+# In case you have a public IPv6 you should just insert it between the double slashes.
 #sed -i.bak -e 's/{$PUBLIC_IPV6}//g' etc/charybdis/ircd.conf
 sed -i.bak -e 's/{$CJDNS_IPV6}/fc42:7cfa:b830:e988:f192:717f:6576:ed12/g' etc/charybdis/ircd.conf
 sed -i.bak -e 's/{$ADMIN NAME}/kaotisk/' etc/charybdis/ircd.conf
@@ -179,9 +183,35 @@ sed -i.bak -e 's/{$ADMIN_EMAIL}/kaotisk@arching-kaos.com/' etc/charybdis/ircd.co
 sed -i.bak -e 's/{$IRC_AUTH_PASSWORD}/somepass/' etc/charybdis/ircd.conf
 sed -i.bak -e 's/{$GOD_IRC_PASSWORD}/somepass/' etc/charybdis/ircd.conf
 ```
-And we continue with icecast2.
+#### Icecast2
+And we continue with icecast2 in which we set in the same way the following variables in `./etc/icecast2/icecast.xml` file.
 ```
 echo "...2/4 icecast"
+```
+- Location
+	`<location>{$LOCATION}</location>`
+- Administrator email
+	`<admin>{$ADMIN_EMAIL}</admin>`
+- Authentication
+```
+    <authentication>
+        <!-- Sources log in with username 'source' -->
+        <source-password>{$ICECAST_SOURCE_PASSWORD}</source-password>
+        <!-- Relays log in with username 'relay' -->
+        <relay-password>{$ICECAST_RELAY_PASSWORD}</relay-password>
+        <!-- Administrators log in with username 'admin' or elsewise set alias -->
+        <admin-user>admin</admin-user>
+        <admin-password>{$ICECAST_ADMIN_PASSWORD}</admin-password>
+    </authentication>
+```
+- Hostname
+	`<hostname>{$ICECAST_HOSTNAME}</hostname>`
+- Setting our webradio domain name to be able to access icecast's stats
+```    <http-headers>
+        <header name="Access-Control-Allow-Origin" value="{$RADIO_WEBSITE_BASEURL}" />
+    </http-headers>```
+So we do `sed` again.
+```
 sed -i.bak -e 's/{$LOCATION}/earth/' etc/icecast2/icecast.xml
 sed -i.bak -e 's/{$ADMIN_EMAIL}/kaotisk@arching-kaos.com/' etc/icecast2/icecast.xml
 sed -i.bak -e 's/{$ICECAST_SOURCE_PASSWORD}/hackme/' etc/icecast2/icecast.xml
@@ -190,12 +220,16 @@ sed -i.bak -e 's/{$ICECAST_ADMIN_PASSWORD}/hackme/' etc/icecast2/icecast.xml
 sed -i.bak -e 's/{$ICECAST_HOSTNAME}/icecast.arching-kaos.local/' etc/icecast2/icecast.xml
 sed -i.bak -e 's/{$RADIO_WEBSITE_BASEURL}/http:\/\/radio.arching-kaos.local/' etc/icecast2/icecast.xml
 ```
+
+#### Liquidsoap
 There goes liquidsoap settings also.
 ```
 echo "...3/4 liquidsoap"
 sed -i.bak -e 's/{$ICECAST_SOURCE_PASSWORD}/hackme/' etc/liquidsoap/radio.liq
 sed -i.bak -e 's/{$LIVE_SOURCE_PASSWORD}/hackmetoo/' etc/liquidsoap/radio.liq
 ```
+
+#### NGINX
 And nginx files as well source files from the submodules and other places that need the same values.
 ```
 echo "...4/4 nginx"
@@ -210,6 +244,7 @@ sed -i.bak -e 's/{$RADIO_SERVER_NAME}/radio.arching-kaos.local/g' etc/nginx/conf
 sed -i.bak -e 's/{$SSB_SERVER_NAME}/ssb.arching-kaos.local/g' etc/nginx/conf.d/ssb.conf etc/ssb-pub-data/config
 sed -i.bak -e 's/{$TRACKER_SERVER_NAME}/tracker.arching-kaos.local/' etc/nginx/conf.d/tracker.conf
 ```
+#### API
 We, then, create a folder where the `arching-kaos-api` files will reside when we will run it. And also, copy some sample files for getting the API ready.
 ```
 echo "Create API directories"
