@@ -4,10 +4,12 @@
 
 ## Description
 
+Arching Kaos is a decentralized radio station.
+
 ### What's that for?
 
 Installing and operating a web radio station with
-- chat based on IRC protocol using `kiwiirc` for connecting with browser
+- chat based on IRC protocol using `thelounge` for connecting with browser
 - API for uploading and listing of radio mixes
 - a web site that renders based on live information through the API
 
@@ -185,14 +187,17 @@ sed -i.bak -e 's/{$GOD_IRC_PASSWORD}/somepass/' etc/charybdis/ircd.conf
 ```
 #### Icecast2
 And we continue with icecast2 in which we set in the same way the following variables in `./etc/icecast2/icecast.xml` file.
+As the suffix of the filename implies, its an XML[^XML] file, hence it's consisting of tags with values (e.g. `<tag>value</tag>`).
 ```
 echo "...2/4 icecast"
 ```
 - Location
+    We can set our instance's location.
 ```
 <location>{$LOCATION}</location>
 ```
 - Administrator email
+    We can set an administrator email. It shows up on the icecast web page under the Server Information section of page Version.
 ```
 <admin>{$ADMIN_EMAIL}</admin>
 ```
@@ -410,3 +415,6 @@ docker run --name nginx --restart always -d --network=host -v $PWD/etc/nginx/con
 ```
 echo "Voila!"
 ```
+
+Definitions:
+[^XML]: https://www.w3.org/XML/
