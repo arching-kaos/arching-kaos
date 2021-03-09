@@ -189,30 +189,36 @@ And we continue with icecast2 in which we set in the same way the following vari
 echo "...2/4 icecast"
 ```
 - Location
-	`<location>{$LOCATION}</location>`
+```
+<location>{$LOCATION}</location>
+```
 - Administrator email
-	`<admin>{$ADMIN_EMAIL}</admin>`
+```
+<admin>{$ADMIN_EMAIL}</admin>
+```
 - Authentication
 ```
-    <authentication>
-        <!-- Sources log in with username 'source' -->
-        <source-password>{$ICECAST_SOURCE_PASSWORD}</source-password>
-        <!-- Relays log in with username 'relay' -->
-        <relay-password>{$ICECAST_RELAY_PASSWORD}</relay-password>
-        <!-- Administrators log in with username 'admin' or elsewise set alias -->
-        <admin-user>admin</admin-user>
-        <admin-password>{$ICECAST_ADMIN_PASSWORD}</admin-password>
-    </authentication>
+<authentication>
+	<!-- Sources log in with username 'source' -->
+	<source-password>{$ICECAST_SOURCE_PASSWORD}</source-password>
+	<!-- Relays log in with username 'relay' -->
+	<relay-password>{$ICECAST_RELAY_PASSWORD}</relay-password>
+	<!-- Administrators log in with username 'admin' or elsewise set alias -->
+	<admin-user>admin</admin-user>
+	<admin-password>{$ICECAST_ADMIN_PASSWORD}</admin-password>
+</authentication>
 ```
 - Hostname
-	`<hostname>{$ICECAST_HOSTNAME}</hostname>`
+```
+<hostname>{$ICECAST_HOSTNAME}</hostname>`
+```
 - Setting our webradio domain name to be able to access icecast's stats
 ```
-    <http-headers>
-        <header name="Access-Control-Allow-Origin" value="{$RADIO_WEBSITE_BASEURL}" />
-    </http-headers>
+<http-headers>
+	<header name="Access-Control-Allow-Origin" value="{$RADIO_WEBSITE_BASEURL}" />
+</http-headers>
 ```
-So we do `sed` again.
+So we do `sed` again. These are the variables that you can edit accordingly in `./install.sh`.
 ```
 sed -i.bak -e 's/{$LOCATION}/earth/' etc/icecast2/icecast.xml
 sed -i.bak -e 's/{$ADMIN_EMAIL}/kaotisk@arching-kaos.com/' etc/icecast2/icecast.xml
@@ -224,28 +230,79 @@ sed -i.bak -e 's/{$RADIO_WEBSITE_BASEURL}/http:\/\/radio.arching-kaos.local/' et
 ```
 
 #### Liquidsoap
-There goes liquidsoap settings also.
+There goes liquidsoap settings also. We basically need to edit two lines:
 ```
 echo "...3/4 liquidsoap"
+```
+- Source icecast password
+```
+output.icecast(
+  %vorbis,
+  radio,
+  mount="demo.ogg",
+  host="localhost",
+  password="{$ICECAST_SOURCE_PASSWORD}",
+  url="http://radio.arching-kaos.com",
+  description="Arching Kaos radio is a collaborative webradio with friends."
+)
+```
+- Live stream access
+```
+ live = input.harbor("live", port=3210, user="source", password="{$LIVE_SOURCE_PASSWORD}") 
+```
+Which we also edit with `sed`.
+```
 sed -i.bak -e 's/{$ICECAST_SOURCE_PASSWORD}/hackme/' etc/liquidsoap/radio.liq
 sed -i.bak -e 's/{$LIVE_SOURCE_PASSWORD}/hackmetoo/' etc/liquidsoap/radio.liq
 ```
 
-#### NGINX
-And nginx files as well source files from the submodules and other places that need the same values.
+#### NGINX and intergration
 ```
 echo "...4/4 nginx"
+```
+We use nginx to serve our pages through the network. `./etc/conf.d` files as well source files from the submodules `./modules` that use the same variables are set in the following way.
+- API
+```
 sed -i.bak -e 's/{$API_SERVER_NAME}/api.arching-kaos.local/g' etc/nginx/conf.d/api.conf modules/arching-kaos-radio/src/ShowList.js modules/arching-kaos-radio/src/Menu.js
+```
+- Documentation
+```
 sed -i.bak -e 's/{$DOCS_SERVER_NAME}/docs.arching-kaos.local/g' etc/nginx/conf.d/api.conf etc/nginx/conf.d/docs.conf
+```
+- Generic domain name
+```
 sed -i.bak -e 's/{$DOMAIN_NAME}/arching-kaos.local/g' etc/nginx/conf.d/default.conf modules/arching-kaos-radio/src/Signature.js
+```
+- Icecast
+```
 sed -i.bak -e 's/{$ICECAST_SERVER_NAME}/icecast.arching-kaos.local/g' etc/nginx/conf.d/icecast.conf modules/arching-kaos-radio/src/App.js modules/arching-kaos-radio/src/Menu.js modules/arching-kaos-radio/src/NowPlaying.js
+```
+- IPFS
+```
 sed -i.bak -e 's/{$IPFS_SERVER_NAME}/ipfs.arching-kaos.local/g' etc/nginx/conf.d/ipfs-gateway.conf modules/arching-kaos-api/config.js
+```
+- IRC
+  - Server settings
+```
 sed -i.bak -e 's/{$IRC_SERVER_NAME}/irc.arching-kaos.local/g' etc/nginx/conf.d/irc.conf etc/thelounge/config.js
+```
+  - Client settings
+```
 sed -i.bak -e 's/{$IRC_CLIENT}/http:\/\/127.0.0.1:9000/g' modules/arching-kaos-radio/src/Chat.js modules/arching-kaos-irc/index.html
+```
+- Radio
+```
 sed -i.bak -e 's/{$RADIO_SERVER_NAME}/radio.arching-kaos.local/g' etc/nginx/conf.d/radio-arching.conf modules/arching-kaos-radio/src/Header.js
+```
+- SSB
+```
 sed -i.bak -e 's/{$SSB_SERVER_NAME}/ssb.arching-kaos.local/g' etc/nginx/conf.d/ssb.conf etc/ssb-pub-data/config
+```
+- Opentracker
+```
 sed -i.bak -e 's/{$TRACKER_SERVER_NAME}/tracker.arching-kaos.local/' etc/nginx/conf.d/tracker.conf
 ```
+
 #### API
 We, then, create a folder where the `arching-kaos-api` files will reside when we will run it. And also, copy some sample files for getting the API ready.
 ```
