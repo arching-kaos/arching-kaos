@@ -207,9 +207,11 @@ echo "...2/4 icecast"
 - Hostname
 	`<hostname>{$ICECAST_HOSTNAME}</hostname>`
 - Setting our webradio domain name to be able to access icecast's stats
-```    <http-headers>
+```
+    <http-headers>
         <header name="Access-Control-Allow-Origin" value="{$RADIO_WEBSITE_BASEURL}" />
-    </http-headers>```
+    </http-headers>
+```
 So we do `sed` again.
 ```
 sed -i.bak -e 's/{$LOCATION}/earth/' etc/icecast2/icecast.xml
