@@ -115,191 +115,51 @@ We start with charybdis IRC daemon settings. Please adjust to your needs.
 echo "...1/4 charybdis"
 ```
 There are certain settings that need to be configured in charybdis. Our main approach is to have everything ready to get into a working state.
-In `./install.sh` the following blocks from `./etc/charybdis/ircd.conf` are going to be edited.
+In `./install.sh` the following blocks from `./etc/charybdis/ircd.conf` are going to be edited. Comments and defaults are stripped. See actual file for more information and help.
+
+- Server information
 ```
 serverinfo {
 	name = "{$IRC_NAME}";
 	sid = "{$IRC_SID}";
 	description = "{$IRC_DESCRIPTION}";
 	network_name = "{$IRC_NETNAME}";
-	hub = yes;
-
-	/* On multi-homed hosts you may need the following. These define
-	 * the addresses we connect from to other servers. */
-	/* for IPv4 */
-	#vhost = "192.0.2.6";
 	vhost = "{$PUBLIC_IPV4}";
-	/* for IPv6 */
 	#vhost6 = "{$PUBLIC_IPV6}";
 	vhost6 = "{$CJDNS_IPV6}";
-	#vhost6 = "2001:db8:2::6";
-#	vhost = "127.0.0.1";
-	/* ssl_private_key: our ssl private key */
-#	ssl_private_key = "etc/ssl.key";
-        ssl_private_key = "/etc/charybdis/ssl.key";
-        ssl_cert = "/etc/charybdis/ssl.pem";
-        ssl_dh_params = "/etc/charybdis/dh.pem";
-
-
-	/* ssl_cert: certificate for our ssl server */
-#	ssl_cert = "ssl.pem";
-	/* ssl_dh_params: DH parameters, generate with openssl dhparam -out dh.pem 2048
-	 * In general, the DH parameters size should be the same as your key's size.
-	 * However it has been reported that some clients have broken TLS implementations which may
-	 * choke on keysizes larger than 2048-bit, so we would recommend using 2048-bit DH parameters
-	 * for now if your keys are larger than 2048-bit.
-	 */
-#	ssl_dh_params = "etc/dh.pem";
-
-	/* ssld_count: number of ssld processes you want to start, if you
-	 * have a really busy server, using N-1 where N is the number of
-	 * cpu/cpu cores you have might be useful. A number greater than one
-	 * can also be useful in case of bugs in ssld and because ssld needs
-	 * two file descriptors per SSL connection.
-	 */
-	ssld_count = 1;
-
-	/* default max clients: the default maximum number of clients
-	 * allowed to connect.  This can be changed once ircd has started by
-	 * issuing:
-	 *   /quote set maxclients <limit>
-	 */
-	default_max_clients = 1024;
-
-	/* nicklen: enforced nickname length (for this server only; must not
-	 * be longer than the maximum length set while building).
-	 */
-	nicklen = 30;
 };
-
+```
+- Administrator information
+```
 admin {
 	name = "{$ADMIN NAME}";
 	description = "{$ADMIN_DESCRIPTION}";
 	email = "{$ADMIN_EMAIL}";
 };
-
+```
+- Listening settings
+```
 listen {
-	/* defer_accept: wait for clients to send IRC handshake data before
-	 * accepting them.  if you intend to use software which depends on the
-	 * server replying first, such as BOPM, you should disable this feature.
-	 * otherwise, you probably want to leave it on.
-	 */
-	defer_accept = yes;
-
-	/* If you want to listen on a specific IP only, specify host.
-	 * host definitions apply only to the following port line.
-	 */
-	#host = "192.0.2.6";
-#	port = 5000, 6665 .. 6669;
 	host = "{$PUBLIC_IPV4}";
 	sslport = 6697;
-#	host = "{$PUBLIC_IPV6}":
-#	sslport = 6697;
-#	port = 6667;
-	/* Listen on IPv6 (if you used host= above). */
 	host = "{$CJDNS_IPV6}";
 	port = 6667;
-	#sslport = 9999;
 };
-
+```
+- Operator settings
+```
 auth {
-	/* user: the user@host allowed to connect.  Multiple IPv4/IPv6 user
-	 * lines are permitted per auth block.  This is matched against the
-	 * hostname and IP address (using :: shortening for IPv6 and
-	 * prepending a 0 if it starts with a colon) and can also use CIDR
-	 * masks.
-	 */
-	user = "*@198.51.100.0/24";
-	user = "*test@2001:db8:1:*";
-
-	/* password: an optional password that is required to use this block.
-	 * By default this is not encrypted, specify the flag "encrypted" in
-	 * flags = ...; below if it is.
-	 */
 	password = "{$IRC_AUTH_PASSWORD}";
-	
-	/* spoof: fake the users user@host to be be this.  You may either
-	 * specify a host or a user@host to spoof to.  This is free-form,
-	 * just do everyone a favour and dont abuse it. (OLD I: = flag)
-	 */
-	spoof = "I.still.hate.packets";
-
-	/* Possible flags in auth:
-	 * 
-	 * encrypted                  | password is encrypted with mkpasswd
-	 * spoof_notice               | give a notice when spoofing hosts
-	 * exceed_limit (old > flag)  | allow user to exceed class user limits
-	 * kline_exempt (old ^ flag)  | exempt this user from k/g/xlines&dnsbls
-	 * dnsbl_exempt		      | exempt this user from dnsbls
-	 * spambot_exempt	      | exempt this user from spambot checks
-	 * shide_exempt		      | exempt this user from serverhiding
-	 * jupe_exempt                | exempt this user from generating
-	 *                              warnings joining juped channels
-	 * resv_exempt		      | exempt this user from resvs
-	 * flood_exempt               | exempt this user from flood limits
-	 *                                     USE WITH CAUTION.
-	 * no_tilde     (old - flag)  | don't prefix ~ to username if no ident
-	 * need_ident   (old + flag)  | require ident for user in this class
-	 * need_ssl                   | require SSL/TLS for user in this class
-	 * need_sasl                  | require SASL id for user in this class
-	 */
-	flags = kline_exempt, exceed_limit;
-	
-	/* class: the class the user is placed in */
 	class = "opers";
 };
-
+```
+- Administrator settings
+```
 operator "god" {
-	/* name: the name of the oper must go above */
-
-	/* user: the user@host required for this operator.  CIDR *is*
-	 * supported now. auth{} spoofs work here, other spoofs do not.
- 	 * multiple user="" lines are supported.
-	 */
 	user = "*god@127.0.0.1";
-
-	/* password: the password required to oper.  Unless ~encrypted is
-	 * contained in flags = ...; this will need to be encrypted using 
-	 * mkpasswd, MD5 is supported
-	 */
 	password = "{$GOD_IRC_PASSWORD}";
-
-	/* rsa key: the public key for this oper when using Challenge.
-	 * A password should not be defined when this is used, see 
-	 * doc/challenge.txt for more information.
-	 */
-	#rsa_public_key_file = "/usr/local/ircd/etc/oper.pub";
-
-	/* umodes: the specific umodes this oper gets when they oper.
-	 * If this is specified an oper will not be given oper_umodes
-	 * These are described above oper_only_umodes in general {};
-	 */
-	#umodes = locops, servnotice, operwall, wallop;
-
-	/* fingerprint: if specified, the oper's client certificate
-	 * fingerprint will be checked against the specified fingerprint
-	 * below.
-	 */
-	#fingerprint = "c77106576abf7f9f90cca0f63874a60f2e40a64b";
-
-	/* snomask: specific server notice mask on oper up.
-	 * If this is specified an oper will not be given oper_snomask.
-	 */
 	snomask = "+Zbfkrsuy";
-
-	/* flags: misc options for the operator.  You may prefix an option
-	 * with ~ to disable it, e.g. ~encrypted.
-	 *
-	 * Default flags are encrypted.
-	 *
-	 * Available options:
-	 *
-	 * encrypted:    the password above is encrypted [DEFAULT]
-	 * need_ssl:     must be using SSL/TLS to oper up
-	 */
 	flags = ~encrypted;
-
-	/* privset: privileges set to grant */
 	privset = "admin";
 };
 
