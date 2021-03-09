@@ -27,7 +27,7 @@ Installing and operating a web radio station with
 
 1. It's based on icecast2 server to produce a stream.
 
-  We just initialize a very simple but configured from our `./install.sh` script Icecast v2 docker image.
+   We just initialize a very simple but configured from our `./install.sh` script Icecast v2 docker image.
 
 2. Uses IPFS to upload, provide links and sync mixes.
 
