@@ -6,25 +6,36 @@
 
 Arching Kaos is a decentralized radio station.
 
-### What's that for?
+## Features
 
-Installing and operating a web radio station with
-- chat based on IRC protocol using `thelounge` for connecting with browser
-- API for uploading and listing of radio mixes
-- a web site that renders based on live information through the API
+Among with a stream of mixes, there are some features that Arching Kaos provides.
 
-### How to use the repository?
+These are:
+- installing and operating a web radio station,
+- an API for uploading mixtape-like content,
+- listing of all radio mixtapes,
+- registering uploaders,
+- a web site that renders based on live information through the API,
+- a decentralized sosial network for sharing the latest uploads and/or news and
+- a decentralized filesystem storage for sharing and helping each other on file hosting.
 
-1. Clone it!
-    how 's that for start?
+## Repository usage
 
-    `git clone <url>`
+This is where the stream of changes are stored. You can clone them using `git` to your
+local filesystem like this:
 
-2. Edit [install.sh](../install.sh) to match your preferences.
+```
+git clone <url>
+```
 
-3. Run `./install.sh` to configure, install and start `arching-kaos`.
+Edit [install.sh](../install.sh) to match your preferences. There is a couple of variables
+being set there which are replaced by some default values. Most of the values can work from
+the default with no editing of the file, but it's good to have a look at it before running it
+anyway.
 
-### What is it based upon?
+Run `./install.sh` to configure, install and start `arching-kaos`.
+
+## How it works?
 
 1. It's based on icecast2 server to produce a stream.
 
@@ -411,6 +422,8 @@ echo "Starting NGINX..."
 docker run --name nginx --restart always -d --network=host -v $PWD/etc/nginx/conf.d:/etc/nginx/conf.d -v $PWD/modules/arching-kaos-generic:/srv/generic -v $PWD/modules/arching-kaos-irc:/srv/irc -v $PWD/modules/arching-kaos-ssb:/srv/ssb nginx
 ```
 ## There you go!
+Our application is successfully installed and running!!
+
 ```
 echo "Voila!"
 ```
