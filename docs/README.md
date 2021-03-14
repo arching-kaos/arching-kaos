@@ -37,6 +37,20 @@ Run `./install.sh` to configure, install and start `arching-kaos`.
 
 ## How it works?
 
+### Problems to solve
+
+#### 1. 24/7 music
+For that, we play all the mixtapes from a playlist in repeat, scanning regularly for content.
+
+#### 2. Multiple contributors
+#### 3. File storage
+#### 4. File sharing
+#### 5. Point of view
+#### 6. Communications
+#### 7. Sosialization
+
+### Quick overview
+
 1. It's based on icecast2 server to produce a stream.
 
    We just initialize a very simple but configured from our `./install.sh` script Icecast v2 docker image.
