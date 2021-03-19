@@ -36,6 +36,8 @@ anyway.
 Run `./install.sh` to configure, install and start `arching-kaos`.
 
 ## How it works?
+We can find out how it works but mostly we need to know what the problems are that we are going
+to solve.
 
 ### Problems to solve
 
@@ -43,11 +45,33 @@ Run `./install.sh` to configure, install and start `arching-kaos`.
 For that, we play all the mixtapes from a playlist in repeat, scanning regularly for content.
 
 #### 2. Multiple contributors
+In a radio station and for a quality time and stream of music, it's needed to have producers
+that they produce the content. So, we need to be able to accept people's contributions to the
+radio station, in order to play them and further share them.
+
 #### 3. File storage
+As people host their files into their computers, so does a server. We can utilize the existence
+of a file in two places or more places with p2p technology. (See 4. File Sharing)
+
 #### 4. File sharing
+As a matter of fact, p2p technology is used for hosting information on multiple peers which can be 
+synchronized through the network. These include IPFS, the InterPlanetery FileSystem which helps us
+on transfering files big files with no limits, works as p2p so our downloads can't fail as it rechecks
+each chunk of the file for its consistency and provides an HTTP gateway for accessing files.
+
 #### 5. Point of view
+Another point is how the radio station and the so formentioned mixtapes are going to make their
+way into publicity! So, apparently, since we speak for a web radio, a web page would be perfect for that.
+
 #### 6. Communications
+Music is about communication. A radio too. How people reach each other? A network of users could be
+established for exchanging messages. So far, IRC does a pretty good job on this. So we 'll be making
+use of an IRC server in order to exchange instant messages.
+
 #### 7. Sosialization
+Instant messaging is enough for getting information "in the moment", but what about the updates of the station?
+There is a need for a place that people can be informed about the latest mixtapes and the news of
+the radio station.
 
 ### Quick overview
 
