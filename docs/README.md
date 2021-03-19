@@ -316,44 +316,66 @@ echo "...4/4 nginx"
 We use nginx to serve our pages through the network. `./etc/conf.d` files as well source files from the submodules `./modules` that use the same variables are set in the following way.
 - API
 ```
-sed -i.bak -e 's/{$API_SERVER_NAME}/api.arching-kaos.local/g' etc/nginx/conf.d/api.conf modules/arching-kaos-radio/src/ShowList.js modules/arching-kaos-radio/src/Menu.js
+sed -i.bak -e 's/{$API_SERVER_NAME}/api.arching-kaos.local/g' \
+		etc/nginx/conf.d/api.conf \
+		modules/arching-kaos-radio/src/ShowList.js \
+		modules/arching-kaos-radio/src/Menu.js
 ```
 - Documentation
 ```
-sed -i.bak -e 's/{$DOCS_SERVER_NAME}/docs.arching-kaos.local/g' etc/nginx/conf.d/api.conf etc/nginx/conf.d/docs.conf
+sed -i.bak -e 's/{$DOCS_SERVER_NAME}/docs.arching-kaos.local/g' \
+		etc/nginx/conf.d/api.conf \
+		etc/nginx/conf.d/docs.conf
 ```
 - Generic domain name
 ```
-sed -i.bak -e 's/{$DOMAIN_NAME}/arching-kaos.local/g' etc/nginx/conf.d/default.conf modules/arching-kaos-radio/src/Signature.js
+sed -i.bak -e 's/{$DOMAIN_NAME}/arching-kaos.local/g' \
+		etc/nginx/conf.d/default.conf \
+		modules/arching-kaos-radio/src/Signature.js
 ```
 - Icecast
 ```
-sed -i.bak -e 's/{$ICECAST_SERVER_NAME}/icecast.arching-kaos.local/g' etc/nginx/conf.d/icecast.conf modules/arching-kaos-radio/src/App.js modules/arching-kaos-radio/src/Menu.js modules/arching-kaos-radio/src/NowPlaying.js
+sed -i.bak -e 's/{$ICECAST_SERVER_NAME}/icecast.arching-kaos.local/g' \
+		etc/nginx/conf.d/icecast.conf \
+		modules/arching-kaos-radio/src/App.js \
+		modules/arching-kaos-radio/src/Menu.js \
+		modules/arching-kaos-radio/src/NowPlaying.js
 ```
 - IPFS
 ```
-sed -i.bak -e 's/{$IPFS_SERVER_NAME}/ipfs.arching-kaos.local/g' etc/nginx/conf.d/ipfs-gateway.conf modules/arching-kaos-api/config.js
+sed -i.bak -e 's/{$IPFS_SERVER_NAME}/ipfs.arching-kaos.local/g' \
+		etc/nginx/conf.d/ipfs-gateway.conf \
+		modules/arching-kaos-api/config.js
 ```
 - IRC
   - Server settings
 ```
-sed -i.bak -e 's/{$IRC_SERVER_NAME}/irc.arching-kaos.local/g' etc/nginx/conf.d/irc.conf etc/thelounge/config.js
+sed -i.bak -e 's/{$IRC_SERVER_NAME}/irc.arching-kaos.local/g' \
+		etc/nginx/conf.d/irc.conf \
+		etc/thelounge/config.js
 ```
   - Client settings
 ```
-sed -i.bak -e 's/{$IRC_CLIENT}/http:\/\/127.0.0.1:9000/g' modules/arching-kaos-radio/src/Chat.js modules/arching-kaos-irc/index.html
+sed -i.bak -e 's/{$IRC_CLIENT}/http:\/\/127.0.0.1:9000/g' \
+		modules/arching-kaos-radio/src/Chat.js \
+		modules/arching-kaos-irc/index.html
 ```
 - Radio
 ```
-sed -i.bak -e 's/{$RADIO_SERVER_NAME}/radio.arching-kaos.local/g' etc/nginx/conf.d/radio-arching.conf modules/arching-kaos-radio/src/Header.js
+sed -i.bak -e 's/{$RADIO_SERVER_NAME}/radio.arching-kaos.local/g' \
+		etc/nginx/conf.d/radio-arching.conf \
+		modules/arching-kaos-radio/src/Header.js
 ```
 - SSB
 ```
-sed -i.bak -e 's/{$SSB_SERVER_NAME}/ssb.arching-kaos.local/g' etc/nginx/conf.d/ssb.conf etc/ssb-pub-data/config
+sed -i.bak -e 's/{$SSB_SERVER_NAME}/ssb.arching-kaos.local/g' \
+		etc/nginx/conf.d/ssb.conf \
+		etc/ssb-pub-data/config
 ```
 - Opentracker
 ```
-sed -i.bak -e 's/{$TRACKER_SERVER_NAME}/tracker.arching-kaos.local/' etc/nginx/conf.d/tracker.conf
+sed -i.bak -e 's/{$TRACKER_SERVER_NAME}/tracker.arching-kaos.local/' \
+		etc/nginx/conf.d/tracker.conf
 ```
 
 #### API
@@ -457,7 +479,14 @@ $HOME/ircd/bin/charybdis
 ### Patching everything into NGINX web proxy
 ```
 echo "Starting NGINX..."
-docker run --name nginx --restart always -d --network=host -v $PWD/etc/nginx/conf.d:/etc/nginx/conf.d -v $PWD/modules/arching-kaos-generic:/srv/generic -v $PWD/modules/arching-kaos-irc:/srv/irc -v $PWD/modules/arching-kaos-ssb:/srv/ssb nginx
+docker run --name nginx \
+	--restart always \
+	-d --network=host \
+	-v $PWD/etc/nginx/conf.d:/etc/nginx/conf.d \
+	-v $PWD/modules/arching-kaos-generic:/srv/generic \
+	-v $PWD/modules/arching-kaos-irc:/srv/irc \
+	-v $PWD/modules/arching-kaos-ssb:/srv/ssb \
+	nginx
 ```
 ## There you go!
 Our application is successfully installed and running!!
