@@ -16,6 +16,7 @@ These are:
 - listing of all radio mixtapes,
 - registering uploaders,
 - a web site that renders based on live information through the API,
+- an IRC network, that also appears on the radio's website,
 - a decentralized sosial network for sharing the latest uploads and/or news and
 - a decentralized filesystem storage for sharing and helping each other on file hosting.
 
@@ -68,7 +69,7 @@ Music is about communication. A radio too. How people reach each other? A networ
 established for exchanging messages. So far, IRC does a pretty good job on this. So we 'll be making
 use of an IRC server in order to exchange instant messages.
 
-#### 7. Sosialization
+#### 7. Socialization
 Instant messaging is enough for getting information "in the moment", but what about the updates of the station?
 There is a need for a place that people can be informed about the latest mixtapes and the news of
 the radio station.
