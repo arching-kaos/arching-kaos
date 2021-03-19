@@ -74,27 +74,42 @@ Instant messaging is enough for getting information "in the moment", but what ab
 There is a need for a place that people can be informed about the latest mixtapes and the news of
 the radio station.
 
+#### 8. Pack all these
+Since, so far we made a list of 7 problems, of course a solution to all these by one package is a
+matter of consideration. Organizing and optimizing different components and ensure that will work
+similarly on different environments is a priority. So we make an image of each component and run
+containers with docker.
+
 ### Quick overview
 
-1. It's based on icecast2 server to produce a stream.
+#### 1. It's based on icecast2 server to produce a stream.
+We just initialize a very simple but configured from our `./install.sh` script Icecast v2 docker image.
 
-   We just initialize a very simple but configured from our `./install.sh` script Icecast v2 docker image.
+#### 2. Uses IPFS to upload, provide links and sync mixes.
+We use IPFS as a gateway to retrieve IPFS links to the local File System of our working environment. We need
+to save in order to provide a "safe source" for Liquidsoap (See 8. Liquidsoap). We also pin the links to our
+IPFS repository.
 
-2. Uses IPFS to upload, provide links and sync mixes.
+#### 3. Uses DAT and Torrent to produce sync options.
+Whenever a mixtape is synced to the radio station, a DAT repository (and a torrent should but not yet) is created
+and stored in the mixtape list.
 
-3. Uses DAT and Torrent to produce sync options.
+#### 4. Uses SSB to produce newsletter on SSB network.
+Whenever a mixtape is synced, SSB network is informed about it's artist, title and IPFS link to listen, in #arching-kaos-mixes.
 
-4. Uses SSB to produce newsletter on SSB network.
+#### 5. Uses ReactJS to produce a webpage for the radio station.
+For creating a web interface, ReactJS framework was used, along with some external libraries, like `node-fetch` to
+fetch statistics (artist and title) for the currently playing mixtape on the streaming radio station and for creating
+a list of all the mixtapes to listen on demand.
 
-5. Uses ReactJS to produce a webpage for the radio station.
+#### 6. Uses expressJS to create and run an API that holds a list of shows and an IP whitelist for authenticating uploaders.
 
-6. Uses expressJS to create and run an API that holds a list of shows and an IP whitelist for authenticating uploaders.
 
-7. Uses CJDNS network for unique IP per uploader.
+#### 7. Uses CJDNS network for unique IP per uploader.
 
-8. Uses Liquidsoap to provide inputs to icecast2.
+#### 8. Uses Liquidsoap to provide inputs to icecast2.
 
-9. Uses charybdis-ircd for communication.
+#### 9. Uses charybdis-ircd for communication.
 
 ## How the installation works
 
