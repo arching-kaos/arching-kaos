@@ -536,6 +536,21 @@ docker run --name nginx \
 	-v $PWD/modules/arching-kaos-ssb:/srv/ssb \
 	nginx
 ```
+
+
+### Edit SSB landpage
+
+Execute the following to get your SSB's servers public id:
+
+`docker exec -it sbot sbot whoami > my_ssb_ident`
+
+and save it to file `my_ssb_ident`. Also execute to get a code for
+100 invites it:
+
+`docker exec -it sbot sbot invite.create 100 > invite_code`
+
+apply the info above in `./modules/arching-kaos-ssb/index.html`.
+
 ## There you go!
 Our application is successfully installed and running!!
 
