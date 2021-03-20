@@ -140,8 +140,16 @@ We need to install basic packages to get the tools will use later. These three t
 
 #TODO Make sure there is a script for all these, at least on Fedora, plus, remember what `bison` was needed for... charybdis?
 
+After installing these, we need to clone this repository, if not already cloned, and change directory to it
+```bash
+git clone https://git.arching-kaos.net/kaotisk/arching-kaos.git
+cd arching-kaos
+```
 
+The installation makes a directory `./storage` with all the data. 
 
+Note: both the projects' files and data files are used. The `./storage` folder is excluded from the repository but not `./etc`.
+If you are contributing be sure not to publish passwords.
 
 ## How the installation works
 
