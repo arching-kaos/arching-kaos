@@ -233,7 +233,7 @@ serverinfo {
 - Administrator information
 ```
 admin {
-	name = "{$ADMIN NAME}";
+	name = "{$ADMIN_NAME}";
 	description = "{$ADMIN_DESCRIPTION}";
 	email = "{$ADMIN_EMAIL}";
 };
