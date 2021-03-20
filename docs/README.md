@@ -126,6 +126,20 @@ the ability to make a network of IRC servers. I choose charybdis-ircd for being 
 connect to other charybdis-ircd instances which is good option for creating a network of IRC servers to prevent downtime
 and centrality problems.
 
+## Environment preparation
+The final testing got part on a Gentoo Linux, a Linux distribution by Gentoo Foundation Inc, but is easily adjusted to
+Fedora Linux which is sponsored by Red Hat Inc. Ubuntu Linux which is sponsored by Canonical Inc, is compatible as
+well, but most of the automatic tools are bundled with Fedora's package manager, `dnf`.
+
+### Off to go!
+We are on a freshly installed Fedora Linux, that's not a requirement, it can be any other distribution but I 'll use this
+as a reference.
+
+We need to install basic packages to get the tools will use later. These three things, `cjdns`, `docker-ce`, `docker-compose`,
+`git`, `bison`, `automake`, `libtool`, `m4` and `nginx`.
+
+#TODO Make sure there is a script for all these, at least on Fedora, plus, remember what `bison` was needed for... charybdis?
+
 
 
 
