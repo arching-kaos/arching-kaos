@@ -103,13 +103,31 @@ fetch statistics (artist and title) for the currently playing mixtape on the str
 a list of all the mixtapes to listen on demand.
 
 #### 6. Uses expressJS to create and run an API that holds a list of shows and an IP whitelist for authenticating uploaders.
-
+ExpressJS is a nodeJS library that helps us create an HTTP server instance which can be manually routed. What I do
+in there, is providing routes that activate certain procedures. We use this for registering uploaders, upload mixtapes
+and provide the mixtape list to whoever applies for it.
 
 #### 7. Uses CJDNS network for unique IP per uploader.
+As most of the devices connected to the internet are mostly routed through a NAT network, it's not possible to have
+different uploaders registered through their IPs. CJDNS creates a p2p mesh network, which is based on public/private
+key encryption. Every peer (user of this program) has a unique cryptographic key pair which consists of a public and
+a private key. The private one is used to sign outgoing packets and decrypt incoming ones, while the public one is
+used to encrypt packets for the particular peer. The public key is also transformed to a private IPv6 on fc00::/7 block
+which can be then used for actually send and receive packets from and to the network.
 
 #### 8. Uses Liquidsoap to provide inputs to icecast2.
+We already have a stream server, icecast v2, set up, waiting to server streams to clients. But actually, there are no
+streams. What we are going to about it, is use Liquidsoap for playing a playlist containing the mixtapes, which is
+regularly refreshed and reload, to icecast's specific mount point so listeners can reach to listen to.
 
 #### 9. Uses charybdis-ircd for communication.
+Many different IRC daemons/servers were investigated to see what fits best, in terms of connectivity, maintainance and
+the ability to make a network of IRC servers. I choose charybdis-ircd for being the most complete IRCv3. It can also
+connect to other charybdis-ircd instances which is good option for creating a network of IRC servers to prevent downtime
+and centrality problems.
+
+
+
 
 ## How the installation works
 
