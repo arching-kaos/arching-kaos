@@ -100,7 +100,7 @@ module.exports = {
 	// Solarized would be `thelounge-theme-solarized`.
 	//
 	// This value is set to `"default"` by default.
-	theme: "default",
+	theme: "morning",
 
 	// ### `prefetch`
 	//
@@ -192,7 +192,7 @@ module.exports = {
 	//
 	// This value is set to `"The Lounge - https://thelounge.chat"` by
 	// default.
-	leaveMessage: "The Lounge - https://thelounge.chat",
+	leaveMessage: "So long... bye! - https://arching-kaos.com",
 
 	// ## Default network
 
@@ -239,15 +239,15 @@ module.exports = {
 	// }
 	// ```
 	defaults: {
-		name: "aku",
-		host: "{$IRC_SERVER_NAME}",
+		name: "Arching Kaos",
+		host: "{$CJDNS_IPV6}",
 		port: 6667,
 		password: "",
 		tls: false,
 		rejectUnauthorized: false,
-		nick: "thelounge%%",
-		username: "thelounge",
-		realname: "The Lounge User",
+		nick: "ak-user%%",
+		username: "ak-user",
+		realname: "Arching Kaos User",
 		join: "#arching-kaos",
 		leaveMessage: "",
 	},
