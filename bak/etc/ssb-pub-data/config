@@ -1,0 +1,22 @@
+{
+  "connections": {
+    "incoming": {
+      "net": [
+        {
+          "scope": "public",
+          "host": "0.0.0.0",
+          "external": "{$SSB_SERVER_NAME}",
+          "transform": "shs",
+          "port": 8008
+        }
+      ]
+    },
+    "outgoing": {
+      "net": [
+        {
+          "transform": "shs"
+        }
+      ]
+    }
+  }
+}
