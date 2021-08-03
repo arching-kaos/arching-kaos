@@ -1,7 +1,5 @@
 \documentclass[12pt]{report}
 \usepackage{helvet}
-\usepackage{biblatex}
-\addbibresource{sample.bib}
 \usepackage[utf8]{inputenc}
 \usepackage[english,greek]{babel}
 \usepackage[T1]{fontenc}
@@ -18,28 +16,12 @@ Little words about what follows... arching ... kaos !!!
 \chapter{Introduction}
 \chapter{Theory}
 In following, we will overview some basic concepts such as radiowaves, what they are and how the are transmitted, radio stations through history, which was their role and which is this today, what do they need to operate and some theoritical organisation models of a hypothetical, commercial or not, radio station.
-
 \section{Radiowaves}
-Radio waves are radiated by electric charges undergoing acceleration\cite{first}.\footnote{Kraus, John D. (1988). Antennas, 2nd Ed. Tata-McGraw Hill. p. 50. ISBN 0074632191.; Serway, Raymond; Faughn, Jerry; Vuille, Chris (2008). College Physics, 8th Ed. Cengage Learning. p. 714. ISBN 978-0495386933.}. They are generated artificially by time varying electric currents, consisting of electrons flowing back and forth in a metal conductor called an antenna,[6][7] thus accelerating. In transmission, a transmitter generates an alternating current of radio frequency which is applied to an antenna. The antenna radiates the power in the current as radio waves. When the waves strike the antenna of a radio receiver, they push the electrons in the metal back and forth, inducing a tiny alternating current. The radio receiver connected to the receiving antenna detects this oscillating current and amplifies it.
-
-As they travel farther from the transmitting antenna, radio waves spread out so their signal strength (intensity in watts per square meter) decreases, so radio transmissions can only be received within a limited range of the transmitter, the distance depending on the transmitter power, antenna radiation pattern, receiver sensitivity, noise level, and presence of obstructions between transmitter and receiver. An omnidirectional antenna transmits or receives radio waves in all directions, while a directional antenna or high gain antenna transmits radio waves in a beam in a particular direction, or receives waves from only one direction.
-
-Radio waves travel through a vacuum at the speed of light, and in air at very close to the speed of light, so the wavelength of a radio wave, the distance in meters between adjacent crests of the wave, is inversely proportional to its frequency.
-
-The other types of electromagnetic waves besides radio waves; infrared, visible light, ultraviolet, X-rays and gamma rays, are also able to carry information and be used for communication. The wide use of radio waves for telecommunication is mainly due to their desirable propagation properties stemming from their large wavelength.[7] Radio waves have the ability to pass through the atmosphere, foliage, and most building materials, and by diffraction can bend around obstructions, and unlike other electromagnetic waves they tend to be scattered rather than absorbed by objects larger than their wavelength.
-
-
 \selectlanguage{greek}
 Τα ραδιοκύματα ανακαλύφθηκαν από τον ... το ... με [...] (κάποιον τρόπο. Τα πρώτα πειράματα που έγιναν ήταν σχετικά με την [...]\footnote{πηγή εδώ}.
 \selectlanguage{english}
 \section{Radio Stations}
-A radio broadcasting station is usually associated with wireless transmission, though in practice broadcasting transmission (sound and television) take place using both wires and radio waves. The point of this is that anyone with the appropriate receiving technology can receive the broadcast.[17]
-Use of a sound broadcasting station
-
-In line to ITU Radio Regulations (article1.61) each broadcasting station shall be classified by the service in which it operates permanently or temporarily.
-
 \subsection{History}
-
 \subsection{Operation}
 \subsection{Work Models}
 \subsection{Today}
@@ -66,17 +48,14 @@ Arching Kaos is a decentralized radio station.
 Among with a stream of mixes, there are some features that Arching Kaos
 provides.
 
-These are: 
-\begin{itemize}
-\item installing and operating a web radio station,
-\item an API for uploading mixtape-like content,
-\item listing of all radio mixtapes
-\item registering uploaders,
-\item a web site that renders based on live information through the API,
-\item an IRC network, that also appears on the radio's website,
-\item a decentralized sosial network for sharing the latest uploads and/or news and
-\item decentralized filesystem storage for sharing and helping each other on file hosting.
-\end{itemize}
+These are: - installing and operating a web radio station, - an API for
+uploading mixtape-like content, - listing of all radio mixtapes, -
+registering uploaders, - a web site that renders based on live
+information through the API, - an IRC network, that also appears on the
+radio's website, - a decentralized sosial network for sharing the latest
+uploads and/or news and - a decentralized filesystem storage for sharing
+and helping each other on file hosting.
+
 \section{Repository usage}\label{repository-usage}
 
 This is where the stream of changes are stored. You can clone them using
@@ -990,7 +969,5 @@ Our application is successfully installed and running!!
 \begin{verbatim}
 echo "Voila!"
 \end{verbatim}
-\medskip
-\printbibliography[heading=bibintoc,title={Whole bibliography}]
 
 \end{document}
