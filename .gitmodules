@@ -1,18 +1,18 @@
 [submodule "api"]
 	path = modules/arching-kaos-api
-	url = https://github.com/kaotisk-hund/arching-kaos-api/.git
+	url = https://github.com/kaotisk-hund/arching-kaos-api
 [submodule "radio"]
 	path = modules/arching-kaos-radio
-	url = https://github.com/kaotisk-hund/arching-kaos-radio/.git
+	url = https://github.com/kaotisk-hund/arching-kaos-radio
 [submodule "modules/docker-dat-store"]
 	path = modules/docker-dat-store
-	url = https://github.com/kaotisk-hund/docker-dat-store/.git
+	url = https://github.com/kaotisk-hund/docker-dat-store
 [submodule "modules/arching-kaos-generic"]
 	path = modules/arching-kaos-generic
-	url = https://github.com/kaotisk-hund/arching-kaos-generic/.git
+	url = https://github.com/kaotisk-hund/arching-kaos-generic
 [submodule "modules/arching-kaos-ssb"]
 	path = modules/arching-kaos-ssb
-	url = https://github.com/kaotisk-hund/arching-kaos-ssb/.git
+	url = https://github.com/kaotisk-hund/arching-kaos-ssb
 [submodule "modules/arching-kaos-irc"]
 	path = modules/arching-kaos-irc
-	url = https://github.com/kaotisk-hund/arching-kaos-irc/.git
+	url = https://github.com/kaotisk-hund/arching-kaos-irc
