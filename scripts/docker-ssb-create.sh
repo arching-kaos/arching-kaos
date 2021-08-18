@@ -10,7 +10,6 @@ podman run -d --name sbot \
 echo "... done"
 echo "Running healer..."
 podman run -d --name healer \
-# -v /var/run/docker.sock:/tmp/docker.sock \
  --restart unless-stopped \
  docker.io/ahdinosaur/healer
 echo "... done"
