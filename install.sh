@@ -59,7 +59,9 @@ export ARCHING_KAOS_API_DIR=$PWD/storage/.arching-kaos-api
 mkdir -p $ARCHING_KAOS_API_DIR/downloads
 cp modules/arching-kaos-api/ipList.json-sample $ARCHING_KAOS_API_DIR/ipList.json
 cp modules/arching-kaos-api/shows.json-sample $ARCHING_KAOS_API_DIR/shows.json
-echo "Getting docker scripts ready ..."
+echo "Getting podman scripts ready ..."
+echo "Creating a pod for arching-kaos ..."
+podman pod create --name arching-kaos
 echo "Proceeding arching-kaos installation ..."
 echo "Starting docs..."
 sh ./scripts/docker-arching-kaos-docs.sh
@@ -107,5 +109,5 @@ echo "Starting IRC..."
 $HOME/ircd/bin/charybdis
 ## TODO Insert crontab @reboot
 echo "Starting NGINX..."
-podman run --name nginx --restart always -d --network=host -v $PWD/etc/nginx/conf.d:/etc/nginx/conf.d -v $PWD/modules/arching-kaos-generic:/srv/generic -v $PWD/modules/arching-kaos-irc:/srv/irc -v $PWD/modules/arching-kaos-ssb:/srv/ssb nginx
+podman run --pod arching-kaos --name nginx --restart always -d --network=host -v $PWD/etc/nginx/conf.d:/etc/nginx/conf.d -v $PWD/modules/arching-kaos-generic:/srv/generic -v $PWD/modules/arching-kaos-irc:/srv/irc -v $PWD/modules/arching-kaos-ssb:/srv/ssb nginx
 echo "Voila!"

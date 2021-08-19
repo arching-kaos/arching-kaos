@@ -1,5 +1,5 @@
 #!/bin/sh
-podman run -d --network=host \
+podman run --pod arching-kaos -d --network=host \
         --name thelounge \
         --volume $PWD/etc/thelounge:/var/opt/thelounge \
         --restart always \
