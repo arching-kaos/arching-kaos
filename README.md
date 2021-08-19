@@ -1,5 +1,7 @@
 # arching-kaos
 
+[![Build Status](https://api.travis-ci.org/kaotisk-hund/arching-kaos.svg?branch=master)](https://travis-ci.org/kaotisk-hund/arching-kaos)
+
 ## Documentation
 
 Documentation can be found on `/docs/`
