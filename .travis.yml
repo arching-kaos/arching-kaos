@@ -1,0 +1,8 @@
+languages: node_js
+node_js:
+  - node
+branches:
+  only:
+    - master
+script:
+  - ./install.sh
