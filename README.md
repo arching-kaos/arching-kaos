@@ -35,21 +35,17 @@ Docker with opentracker
 `./scripts/docker-opentracker.sh`
 
 ### IRC
-> Charybdis IRC daemon.
+> Next Generation IRC daemon.
 
 - [x] Simple install
 
 Static files:
-- `./etc/charybdis/ircd.conf`
-- `./etc/charybdis/ircd.conf-backup`
-- `./etc/charybdis/ircd.motd`
+- `./etc/ngircd/ngircd.conf`
+- `./etc/ngircd/ngircd.motd`
 
 Scripts:
-- `./scripts/charybdis-fedora-install.sh`
-- `./scripts/charybdis-simple-install.sh`
-
-Source:
-- `git.arching-kaos.net/kaotisk/charybdis.git`
+- `./scripts/configure-ngircd.sh`
+- `./scripts/docker-ngircd.sh`
 
 ### Web server
 > nginx web server
@@ -105,20 +101,6 @@ Mount location:
 
 Scripts
 - `./scripts/docker-ipfs.sh`
-
-### Dat
-
-- [x] Simple install
-
-Mount location:
-`./storage/dat`
-
-Old scripts (use simple install):
-- `./scripts/run-dat-gateway.sh`
-- `./scripts/run-dat.sh`
-
-Docker submodule:
-- `./modules/docker-dat-store`
 
 ### SSB
 
