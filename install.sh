@@ -12,8 +12,6 @@ git submodule init arching-kaos-ssb
 git submodule update arching-kaos-ssb
 git submodule init arching-kaos-irc
 git submodule update arching-kaos-irc
-git submodule init docker-dat-store
-git submodule update docker-dat-store
 echo "Done!"
 cd ..
 echo "Configuring /etc ..."
