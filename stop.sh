@@ -1,4 +1,10 @@
 #!/bin/sh
-podman stop api docs icecast ipfs sbot opentracker liquidsoap arching-kaos-radio dat-store healer nginx thelounge
-echo "Warning: going to remove all stop containers now!"
-podman container prune -f
+echo "Stopping containers and pod..."
+podman stop api docs icecast ipfs sbot opentracker liquidsoap arching-kaos-radio irc-server healer nginx thelounge
+podman pod stop arching-kaos
+echo "Warning: Removing containers..."
+podman container rm api docs icecast ipfs sbot opentracker liquidsoap arching-kaos-radio irc-server healer nginx thelounge
+#podman container prune -f
+echo "Removing pod..."
+podman pod rm arching-kaos
+
