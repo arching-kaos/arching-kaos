@@ -81,12 +81,6 @@ cd modules/arching-kaos-radio
 ./start.sh
 echo "... done"
 cd ../..
-echo "Starting dat-store..."
-cd modules/docker-dat-store
-sh ./build.sh
-sh ./start.sh
-echo "... done"
-cd ../..
 echo "Starting thelounge..."
 sh ./scripts/docker-thelounge.sh
 echo "... done"
