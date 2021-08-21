@@ -17,19 +17,8 @@ git submodule update docker-dat-store
 echo "Done!"
 cd ..
 echo "Configuring /etc ..."
-echo "...1/4 charybdis"
-sed -i.bak -e 's/{$IRC_NAME}/irc.arching-kaos.net/' etc/charybdis/ircd.conf
-sed -i.bak -e 's/{$IRC_SID}/44Q/' etc/charybdis/ircd.conf
-sed -i.bak -e 's/{$IRC_DESCRIPTION}/A friendly IRC server/' etc/charybdis/ircd.conf
-sed -i.bak -e 's/{$IRC_NETNAME}/irc.arching-kaos.net/' etc/charybdis/ircd.conf
-sed -i.bak -e 's/{$PUBLIC_IPV4}/127.0.0.1/g' etc/charybdis/ircd.conf
-#sed -i.bak -e 's/{$PUBLIC_IPV6}//g' etc/charybdis/ircd.conf
-sed -i.bak -e 's/{$CJDNS_IPV6}/fc42:7cfa:b830:e988:f192:717f:6576:ed12/g' etc/charybdis/ircd.conf etc/thelounge/config.js
-sed -i.bak -e 's/{$ADMIN_NAME}/kaotisk/' etc/charybdis/ircd.conf
-sed -i.bak -e 's/{$ADMIN_DESCRIPTION}/some descr/' etc/charybdis/ircd.conf
-sed -i.bak -e 's/{$ADMIN_EMAIL}/kaotisk@arching-kaos.com/' etc/charybdis/ircd.conf
-sed -i.bak -e 's/{$IRC_AUTH_PASSWORD}/somepass/' etc/charybdis/ircd.conf
-sed -i.bak -e 's/{$GOD_IRC_PASSWORD}/somepass/' etc/charybdis/ircd.conf
+echo "...1/4 ngircd"
+sh scripts/configure-ngircd.sh
 echo "...2/4 icecast"
 sed -i.bak -e 's/{$LOCATION}/earth/' etc/icecast2/icecast.xml
 sed -i.bak -e 's/{$ADMIN_EMAIL}/kaotisk@arching-kaos.com/' etc/icecast2/icecast.xml
@@ -101,12 +90,8 @@ cd ../..
 echo "Starting thelounge..."
 sh ./scripts/docker-thelounge.sh
 echo "... done"
-echo "Setting up IRC"
-sh ./scripts/charybdis-simple-install.sh
-cp etc/charybdis/ircd.conf $HOME/ircd/etc/ircd.conf
-cp etc/charybdis/ircd.motd $HOME/ircd/etc/ircd.motd
-echo "Starting IRC..."
-$HOME/ircd/bin/charybdis
+echo "Setting up and running IRC"
+sh ./scripts/docker-ngircd.sh
 ## TODO Insert crontab @reboot
 echo "Starting NGINX..."
 podman run --pod arching-kaos --name nginx --restart always -d --network=host -v $PWD/etc/nginx/conf.d:/etc/nginx/conf.d -v $PWD/modules/arching-kaos-generic:/srv/generic -v $PWD/modules/arching-kaos-irc:/srv/irc -v $PWD/modules/arching-kaos-ssb:/srv/ssb nginx
