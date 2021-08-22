@@ -48,7 +48,7 @@ cp modules/arching-kaos-api/ipList.json-sample $ARCHING_KAOS_API_DIR/ipList.json
 cp modules/arching-kaos-api/shows.json-sample $ARCHING_KAOS_API_DIR/shows.json
 echo "Getting podman scripts ready ..."
 echo "Creating a pod for arching-kaos ..."
-podman pod create --name arching-kaos -p 6669:6667 -p 8081:80 -p 8000:8000 -p 8080:8080 -p 4001:4001 -p 5001:5001 -p 8008:8008 -p 8989:8989 -p 6969:6969 -p 5000:5000 -p 3001:3001 -p 3000:3000
+podman pod create --name arching-kaos -p 6669:6667 -p 9000:9000 -p 8081:80 -p 8000:8000 -p 8080:8080 -p 4001:4001 -p 5001:5001 -p 8008:8008 -p 8989:8989 -p 6969:6969 -p 5000:5000 -p 3001:3001 -p 3000:3000
 echo "Proceeding arching-kaos installation ..."
 echo "Starting docs..."
 sh ./scripts/docker-arching-kaos-docs.sh
@@ -86,5 +86,5 @@ echo "Setting up and running IRC"
 sh ./scripts/docker-ngircd.sh
 ## TODO Insert crontab @reboot
 echo "Starting NGINX..."
-podman run --pod arching-kaos --name nginx --restart always -d --network=host -v $PWD/etc/nginx/conf.d:/etc/nginx/conf.d -v $PWD/modules/arching-kaos-generic:/srv/generic -v $PWD/modules/arching-kaos-irc:/srv/irc -v $PWD/modules/arching-kaos-ssb:/srv/ssb nginx
+podman run --pod arching-kaos --name nginx --restart always -d --network=host -v $PWD/etc/nginx/conf.d:/etc/nginx/conf.d -v $PWD/modules/arching-kaos-generic:/srv/generic -v $PWD/modules/arching-kaos-irc:/srv/irc -v $PWD/modules/arching-kaos-ssb:/srv/ssb quay.io/libpod/alpine_nginx
 echo "Voila!"
