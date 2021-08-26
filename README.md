@@ -2,6 +2,15 @@
 
 [![Build Status](https://api.travis-ci.org/kaotisk-hund/arching-kaos.svg?branch=master)](https://travis-ci.org/kaotisk-hund/arching-kaos)
 
+## Release
+Currently master is used for development updates. Below, you find available releases with a full working state.
+
+### v1.0
+
+Working instance, checked etc:
+
+- commit 6fb9a4d765f05c169742ec450c6418d276c7cad8
+
 ## Documentation
 
 Documentation can be found on `/docs/`
