@@ -48,7 +48,7 @@ cp modules/arching-kaos-api/ipList.json-sample $ARCHING_KAOS_API_DIR/ipList.json
 cp modules/arching-kaos-api/shows.json-sample $ARCHING_KAOS_API_DIR/shows.json
 echo "Getting podman scripts ready ..."
 echo "Creating a pod for arching-kaos ..."
-podman pod create --name arching-kaos -p 6669:6667 -p 9000:9000 -p 8081:80 -p 8000:8000 -p 8080:8080 -p 4001:4001 -p 8001:8001 -p 5001:5001 -p 8008:8008 -p 8989:8989 -p 6969:6969 -p 5000:5000 -p 3000:3000
+podman pod create --name arching-kaos -p 6667:6667 -p 9000:9000 -p 8081:80 -p 8000:8000 -p 8080:8080 -p 4001:4001 -p 8001:8001 -p 5001:5001 -p 8008:8008 -p 8989:8989 -p 6969:6969 -p 5000:5000 -p 3000:3000
 echo "Proceeding arching-kaos installation ..."
 echo "Starting docs..."
 sh ./scripts/docker-arching-kaos-docs.sh
