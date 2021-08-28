@@ -5,9 +5,9 @@
 
 `sites-enabled` in order to be mounted in docker
 
-### `charybdis`
+### `ngircd`
 
-`ircd.conf` prototype and `ircd.motd` sample for use with charybdis.
+`ngircd.conf` prototype and `ngircd.motd` sample for use with ngircd.
 
 ### `liquidsoap`
 
@@ -21,6 +21,3 @@
 
 `config` file to use in ssb.
 
-#### Optional instead of charybdis
-
-`ngircd` - Not supported for now
