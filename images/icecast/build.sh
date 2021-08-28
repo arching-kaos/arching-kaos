@@ -1,2 +1,2 @@
 #!/bin/bash
-podman build -f Dockerfile -t ice .
+podman build -f Dockerfile -t icecast .
