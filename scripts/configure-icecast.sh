@@ -12,3 +12,6 @@ sed -i.bak -e 's/{$RADIO_WEBSITE_BASEURL}/http:\/\/radio.arching-kaos.com/' etc/
 #sed -i.bak -e 's/{$ICECAST_PEER_PORT}' etc/icecast2/icecast.xml
 #sed -i.bak -e 's/{$ICECAST_PEER_MOUNT}' etc/icecast2/icecast.xml
 #sed -i.bak -e 's/{$ICECAST_RELAY_MOUNT}' etc/icecast2/icecast.xml
+
+echo "Copying configuration inside the image environment..."
+cp etc/icecast2/icecast.xml images/icecast/icecast.xml
