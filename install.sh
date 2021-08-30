@@ -71,6 +71,11 @@ echo "... done"
 echo "Starting opentracker..."
 sh ./scripts/docker-opentracker.sh
 echo "... done"
+echo "Building ssb..."
+cd images/ssb
+sh build.sh
+cd ../..
+echo "... done"
 echo "Starting ssb..."
 sh ./scripts/docker-ssb-create.sh
 echo "... done"
