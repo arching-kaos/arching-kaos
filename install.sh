@@ -95,5 +95,5 @@ echo "Setting up and running IRC"
 sh ./scripts/docker-ngircd.sh
 ## TODO Insert crontab @reboot
 echo "Starting NGINX..."
-podman run --pod arching-kaos --name nginx --restart always -d --network=host -v $PWD/etc/nginx/conf.d:/etc/nginx/conf.d -v $PWD/modules/arching-kaos-generic:/srv/generic -v $PWD/modules/arching-kaos-irc:/srv/irc -v $PWD/modules/arching-kaos-ssb:/srv/ssb nginx
+podman run --pod arching-kaos --name nginx --restart always -d --network=host -v $PWD/etc/nginx/conf.d:/etc/nginx/conf.d:Z -v $PWD/modules/arching-kaos-generic:/srv/generic:Z -v $PWD/modules/arching-kaos-irc:/srv/irc:Z -v $PWD/modules/arching-kaos-ssb:/srv/ssb:Z nginx
 echo "Voila!"
