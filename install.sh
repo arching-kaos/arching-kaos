@@ -44,6 +44,11 @@ sed -i.bak -e 's/{$IRC_CLIENT}/http:\/\/irc.arching-kaos.local/g' modules/archin
 sed -i.bak -e 's/{$RADIO_SERVER_NAME}/radio.arching-kaos.local/g' etc/nginx/conf.d/radio-arching.conf modules/arching-kaos-radio/src/Header.js
 sed -i.bak -e 's/{$SSB_SERVER_NAME}/ssb.arching-kaos.local/g' etc/nginx/conf.d/ssb.conf etc/ssb-pub-data/config
 sed -i.bak -e 's/{$TRACKER_SERVER_NAME}/tracker.arching-kaos.local/' etc/nginx/conf.d/tracker.conf
+echo "Building nginx image..."
+cd images/nginx
+sh build.sh
+cd ../..
+echo "... done"
 echo "Create API directories"
 # sh ./modules/arching-kaos-api/api-dir.sh # Going the custom way again
 export ARCHING_KAOS_API_DIR=$PWD/storage/.arching-kaos-api
@@ -90,5 +95,5 @@ echo "Setting up and running IRC"
 sh ./scripts/docker-ngircd.sh
 ## TODO Insert crontab @reboot
 echo "Starting NGINX..."
-podman run --pod arching-kaos --name nginx --restart always -d --network=host -v $PWD/etc/nginx/conf.d:/etc/nginx/conf.d -v $PWD/modules/arching-kaos-generic:/srv/generic -v $PWD/modules/arching-kaos-irc:/srv/irc -v $PWD/modules/arching-kaos-ssb:/srv/ssb quay.io/libpod/alpine_nginx
+podman run --pod arching-kaos --name nginx --restart always -d --network=host -v $PWD/etc/nginx/conf.d:/etc/nginx/conf.d -v $PWD/modules/arching-kaos-generic:/srv/generic -v $PWD/modules/arching-kaos-irc:/srv/irc -v $PWD/modules/arching-kaos-ssb:/srv/ssb nginx
 echo "Voila!"
