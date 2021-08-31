@@ -19,7 +19,13 @@ Can be launched with docker too
 
 `./scripts/docker-arching-kaos-docs.sh`
 
-## Simple install
+## Install and run
+
+### From fresh Fedora installation
+As root:
+`sh -c "$(curl -fsSL https://github.com/kaotisk-hund/arching-kaos/raw/master/init.sh)"`
+
+### Cloning manually
 
 Clone the repository using git:
 
