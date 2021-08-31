@@ -1,5 +1,7 @@
 FROM fedora
-RUN dnf install -y nginx 
+RUN dnf install -y nginx \
+        && dnf clean all \
+        && rm -rf /var/cache/yum
 EXPOSE 80 443
 STOPSIGNAL SIGQUIT
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
