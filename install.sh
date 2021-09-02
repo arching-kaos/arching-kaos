@@ -86,7 +86,8 @@ sh ./scripts/docker-liquidsoap.sh
 echo "... done"
 echo "Starting API..."
 cd modules/arching-kaos-api
-sh ./install.sh
+#sh ./install.sh
+podman pull docker.io/kaotisk/arching-kaos-api
 cd ../..
 sh ./modules/arching-kaos-api/run.sh
 echo "... done"
