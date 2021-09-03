@@ -1,5 +1,8 @@
 #!/bin/sh
 echo "Getting the basics done..."
+echo "So, we backing up the etc/ folder to be able to reset later"
+mkdir backup
+cp -r etc backup
 echo "Initializing and updating modules..."
 cd modules
 git submodule init arching-kaos-api
