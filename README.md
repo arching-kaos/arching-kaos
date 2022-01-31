@@ -1,12 +1,10 @@
 # arching-kaos
 
-[![Build Status](https://api.travis-ci.org/kaotisk-hund/arching-kaos.svg?branch=master)](https://travis-ci.org/kaotisk-hund/arching-kaos)
-
 Arching Kaos is a project for building a Web Radio Station. It consists from tools that allow us to play its content, upload new one, persist it on IPFS, make use of CJDNS for authenticating contributors and provide an IRC server for communication of producers, contributors, fans etc. The goal is to reach decentralization as we currently see is happening all around the world.
 
 All dependencies can be resolved from the `init.sh` script provided for Fedora systems. Testing got into place in Fedora, Ubuntu and Gentoo Linux distributions for v1.0 tag. After this checkpoint, the focal distribution is Fedora Linux version 34.
 
-## Release
+## Releases
 Currently master is used for development updates. Below, you find available releases with a full working state.
 
 ### v1.0
@@ -14,6 +12,12 @@ Currently master is used for development updates. Below, you find available rele
 Working instance, checked etc:
 
 - commit 6fb9a4d765f05c169742ec450c6418d276c7cad8
+
+### v2.0
+
+Arching Kaos v2.0 involves development of new tools.
+
+Keep an eye on [arching-kaos-roadmap](https://github.com/arching-kaos/arching-kaos-roadmap/blob/master/maps/ROADMAP.md).
 
 ## Documentation
 
