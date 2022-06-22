@@ -1,4 +1,4 @@
-FROM node:18-buster
+FROM node:current-bullseye-slim
 LABEL description="A demo Dockerfile for build Docsify."
 WORKDIR /docs
 RUN npm install -g docsify-cli@latest
