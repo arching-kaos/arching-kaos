@@ -1,2 +1,2 @@
-FROM node:current-bullseye-slim
+FROM node:current-buster-slim
 ENTRYPOINT ["npx", "ssb-server", "start"]
