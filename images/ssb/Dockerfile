@@ -1,2 +1,2 @@
-FROM node:current-buster-slim
+FROM node:bookworm-slim
 ENTRYPOINT ["npx", "ssb-server", "start"]
