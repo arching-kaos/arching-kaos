@@ -1,4 +1,4 @@
-FROM node:bookworm-slim
+FROM node:alpine
 LABEL description="A demo Dockerfile for build Docsify."
 WORKDIR /docs
 RUN npm install -g docsify-cli@latest
